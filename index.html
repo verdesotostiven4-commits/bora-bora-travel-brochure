@@ -3,133 +3,51 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="theme-color" content="#082f49" />
+    <meta name="theme-color" content="#03111f" />
     <title>Bora Bora Paradise Agency | The Perfect Tourist Experience</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Playfair+Display:wght@700;800;900&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800;900&family=Playfair+Display:wght@700;800;900&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="./style.css" />
   </head>
   <body>
-    <div class="cursor-glow" aria-hidden="true"></div>
-
-    <header class="topbar">
-      <a class="brand" href="#home" aria-label="Bora Bora Paradise Agency home">
-        <img id="logoImg" alt="Bora Bora Paradise Agency logo" />
-        <span>
-          <strong>Bora Bora Paradise Agency</strong>
-          <small>The Perfect Tourist Experience</small>
-        </span>
-      </a>
-      <nav class="nav-actions" aria-label="Presentation actions">
-        <button id="modeBtn" class="nav-btn" type="button">Presentation mode</button>
-        <button id="grammarBtn" class="nav-btn" type="button">Highlight grammar</button>
-        <a class="nav-btn nav-btn-gold" href="#pitch">Start journey</a>
-      </nav>
-    </header>
-
-    <main id="home">
-      <section class="hero" id="cover">
-        <div class="hero-bg" id="heroBg"></div>
-        <div class="hero-overlay"></div>
-        <div class="hero-content reveal">
-          <div class="hero-logo-wrap"><img id="heroLogo" alt="Agency logo" /></div>
-          <p class="eyebrow light">Travel fair mini presentation • 2–3 minutes</p>
+    <div class="app" id="app">
+      <section class="gate-screen" id="gateScreen" aria-label="Waiting screen">
+        <div class="gate-bg" id="gateBg"></div>
+        <div class="water-shine"></div>
+        <div class="flight-line"><span class="plane">✈</span></div>
+        <div class="gate-panel">
+          <img id="gateLogo" class="gate-logo" alt="Bora Bora Paradise Agency logo" />
+          <p class="eyebrow light">Flight BB-1500 • Now boarding</p>
           <h1>The Perfect Tourist Experience</h1>
-          <p class="lead">A cinematic and interactive Bora Bora vacation package created to compete for <strong>Most Creative Trip</strong>.</p>
-          <div class="hero-actions">
-            <a class="primary-btn" href="#pitch">Begin the journey</a>
-            <a class="glass-btn" href="#mission">See requirements</a>
-          </div>
+          <p class="gate-copy">Welcome passengers. Your all-inclusive Bora Bora journey is ready to begin.</p>
+          <button id="beginBtn" class="begin-btn" type="button">Begin the Journey</button>
+          <small>Press Enter to start • Use arrow keys to navigate</small>
         </div>
-        <aside class="boarding-pass reveal delay-1" aria-label="Vacation package summary">
-          <span class="pass-label">Boarding Pass</span>
-          <h2>Bora Bora</h2>
-          <div class="pass-grid"><span>Package</span><strong>All-inclusive</strong><span>Length</span><strong>5 days</strong><span>Price</span><strong>$1,500 / person</strong></div>
-          <div class="barcode" aria-hidden="true"></div>
-        </aside>
-      </section>
-
-      <section class="section mission" id="mission">
-        <div class="section-head reveal">
-          <p class="eyebrow">What the task asks for</p>
-          <h2>Everything the teacher requested, but presented like a real agency.</h2>
-        </div>
-        <div class="mission-grid reveal delay-1">
-          <article><span>01</span><h3>Tourism vocabulary</h3><p>Flights, resort, lagoon, bungalows, cuisine, excursions, luggage, and booking confirmation.</p></article>
-          <article><span>02</span><h3>Gerunds & infinitives</h3><p>Grammar appears naturally in the sales pitch and can be highlighted instantly.</p></article>
-          <article><span>03</span><h3>Pictures or drawings</h3><p>Realistic generated visuals are used for each brochure panel.</p></article>
-          <article><span>04</span><h3>Travel recommendations</h3><p>A professional checklist closes the brochure with useful tips.</p></article>
+        <div class="status-strip">
+          <span>Destination: Bora Bora</span><span>Gate: Paradise</span><span>Status: Ready</span>
         </div>
       </section>
 
-      <section class="section pitch" id="pitch">
-        <div class="section-head reveal">
-          <p class="eyebrow">Interactive pitch deck</p>
-          <h2>Present the trip step by step.</h2>
-          <p>Use next/back, keyboard arrows, or click the route points. The images, vocabulary, and grammar change with every destination.</p>
-        </div>
-
-        <div class="travel-map reveal delay-1" id="routeMap"></div>
-
-        <div class="deck reveal delay-2">
-          <aside class="slide-visual">
-            <img id="slideImage" alt="Bora Bora trip scene" />
-            <div class="slide-count" id="slideNumber">1 / 6</div>
+      <main class="stage" id="stage" aria-live="polite">
+        <section class="slide active" id="slideStage">
+          <img id="slideImg" class="slide-img" alt="Bora Bora scene" />
+          <div class="slide-gradient"></div>
+          <div class="route-rail" id="routeRail"></div>
+          <article class="content-card" id="contentCard"></article>
+          <aside class="passport" id="passportCard">
+            <span>Travel Passport</span>
+            <strong id="passportStamp">BORA BORA</strong>
+            <small id="passportStep">01 / 06</small>
           </aside>
-          <article class="slide-copy" id="slideCard" aria-live="polite"></article>
-        </div>
+        </section>
 
-        <div class="deck-controls reveal delay-2">
-          <button id="prevSlide" class="glass-btn dark" type="button">Back</button>
-          <button id="nextSlide" class="primary-btn" type="button">Next destination</button>
-        </div>
-      </section>
-
-      <section class="section brochure" id="brochure">
-        <div class="section-head reveal">
-          <p class="eyebrow">Final task-based output</p>
-          <h2>The 6-panel travel agency brochure.</h2>
-        </div>
-        <div class="brochure-grid" id="brochureGrid"></div>
-      </section>
-
-      <section class="section interactive" id="interactive">
-        <div class="section-head reveal">
-          <p class="eyebrow">Creative extra for the point</p>
-          <h2>Build your perfect trip.</h2>
-          <p>This section makes the project feel interactive instead of only reading slides.</p>
-        </div>
-        <div class="interactive-grid reveal delay-1">
-          <article class="builder-card">
-            <h3>Package Builder</h3>
-            <p>Select your travel style and reveal the final package.</p>
-            <div class="choice-grid">
-              <button class="choice active" data-choice="Luxury Resort">Luxury Resort</button>
-              <button class="choice" data-choice="Adventure Tour">Adventure Tour</button>
-              <button class="choice" data-choice="Local Cuisine">Local Cuisine</button>
-              <button class="choice" data-choice="Relaxing Beach">Relaxing Beach</button>
-            </div>
-            <div class="result-card"><span>Your selected experience</span><strong id="choiceResult">Luxury Resort</strong><small>Perfect for travelers who plan to travel with comfort and style.</small></div>
-          </article>
-          <article class="stamp-card">
-            <h3>Passport Stamps</h3>
-            <p>Click each stamp during the presentation to make the route feel alive.</p>
-            <div class="stamp-buttons" id="stampButtons"></div>
-            <div class="stamp-wall" id="stampWall"></div>
-          </article>
-        </div>
-      </section>
-
-      <section class="final-cta reveal">
-        <img id="footerLogo" alt="Bora Bora Paradise Agency logo" />
-        <p class="eyebrow light">Class voting</p>
-        <h2>Vote for us: Most Creative Trip</h2>
-        <p>We included tourism vocabulary, gerunds, infinitives, realistic visuals, travel recommendations, and interactive presentation tools.</p>
-      </section>
-    </main>
-
-    <button id="topBtn" class="top-btn" type="button" aria-label="Back to top">↑</button>
+        <nav class="controls" aria-label="Slide controls">
+          <button id="prevBtn" type="button">‹</button>
+          <button id="nextBtn" type="button">Next Destination</button>
+        </nav>
+      </main>
+    </div>
     <script src="./script.js"></script>
   </body>
 </html>
