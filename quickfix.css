@@ -1,4 +1,4 @@
-/* Emergency presentation fix: logo white backing + brighter boarding screen */
+/* Emergency presentation fix: brighter boarding screen, clean plane panel and working launch state */
 :root{
   --fix-navy:#031522;
   --fix-teal:#18c8bd;
@@ -19,7 +19,7 @@
   border-radius:24px!important;
   object-fit:contain!important;
   filter:none!important;
-  box-shadow:0 18px 48px rgba(0,0,0,.28),0 0 0 1px rgba(255,255,255,.9)!important;
+  box-shadow:0 18px 48px rgba(0,0,0,.24),0 0 0 1px rgba(255,255,255,.9)!important;
 }
 
 .brand img,
@@ -42,21 +42,23 @@
 #boardingLogo,
 .boarding-logo-line img,
 .lounge-logo{
-  width:150px!important;
-  height:150px!important;
-  padding:14px!important;
-  border-radius:32px!important;
+  width:132px!important;
+  height:132px!important;
+  padding:12px!important;
+  border-radius:30px!important;
 }
 
 .boarding-logo-line{
   display:inline-flex!important;
+  align-items:center!important;
   width:max-content!important;
   max-width:100%!important;
   padding:14px 18px!important;
+  gap:18px!important;
   border-radius:34px!important;
-  background:rgba(255,255,255,.10)!important;
-  border:1px solid rgba(255,255,255,.18)!important;
-  box-shadow:0 20px 70px rgba(0,0,0,.20)!important;
+  background:rgba(255,255,255,.16)!important;
+  border:1px solid rgba(255,255,255,.24)!important;
+  box-shadow:0 20px 70px rgba(0,0,0,.16)!important;
 }
 
 .boarding-overlay:not(.hidden){
@@ -65,107 +67,166 @@
   pointer-events:auto!important;
 }
 
+.boarding-overlay{
+  background:#0b3a4b!important;
+}
+
 .boarding-overlay::before{
-  background:linear-gradient(90deg,rgba(2,11,19,.78),rgba(2,22,34,.48),rgba(4,80,98,.16)),radial-gradient(circle at 78% 18%,rgba(24,200,189,.35),transparent 36%)!important;
+  background:linear-gradient(90deg,rgba(2,18,30,.54),rgba(4,76,94,.26),rgba(13,170,165,.08)),radial-gradient(circle at 78% 18%,rgba(99,255,242,.34),transparent 38%)!important;
 }
 
 .boarding-bg{
-  filter:saturate(1.18) contrast(1.06) brightness(1)!important;
+  filter:saturate(1.2) contrast(1.04) brightness(1.16)!important;
 }
 
 .boarding-shade{
-  background:linear-gradient(90deg,rgba(2,9,15,.74),rgba(3,28,39,.34),rgba(3,28,39,.08))!important;
+  background:linear-gradient(90deg,rgba(2,18,30,.62),rgba(4,76,94,.22),rgba(3,28,39,.02))!important;
 }
 
 .boarding-card,
 .boarding-card.director-boarding{
-  background:linear-gradient(135deg,rgba(5,28,42,.68),rgba(7,79,96,.36))!important;
-  border:1px solid rgba(255,255,255,.34)!important;
-  box-shadow:0 46px 150px rgba(0,0,0,.42),inset 0 1px 0 rgba(255,255,255,.20)!important;
+  background:linear-gradient(135deg,rgba(10,70,90,.58),rgba(17,144,151,.24))!important;
+  border:1px solid rgba(255,255,255,.42)!important;
+  box-shadow:0 38px 120px rgba(0,0,0,.28),inset 0 1px 0 rgba(255,255,255,.22)!important;
   color:white!important;
 }
 
-.boarding-card.director-boarding{
-  min-height:min(720px,82vh)!important;
+.boarding-card{
+  min-height:min(690px,78vh)!important;
 }
 
-.lounge-copy{
-  background:linear-gradient(180deg,rgba(2,11,19,.22),rgba(2,11,19,.08))!important;
+.boarding-left h1{
+  color:#fff!important;
+  text-shadow:0 14px 32px rgba(0,0,0,.28)!important;
 }
 
-.lounge-brand{
-  display:inline-flex!important;
-  width:max-content!important;
-  max-width:100%!important;
-  padding:14px 18px!important;
-  border-radius:32px!important;
-  background:rgba(255,255,255,.10)!important;
-  border:1px solid rgba(255,255,255,.18)!important;
-  box-shadow:0 20px 70px rgba(0,0,0,.18)!important;
+.boarding-left p{
+  color:#f2ffff!important;
+  opacity:1!important;
 }
 
 .boarding-logo-line b,
 .lounge-brand div span,
 .departure-board small,
+.flight-board small,
 .lounge-stats small,
 .ticket-grid small{
-  color:#8ffcf3!important;
+  color:#bafff8!important;
 }
 
 .boarding-logo-line span,
 .lounge-brand div strong,
 .lounge-copy h1,
-.boarding-left h1,
 .boarding-card h1,
 .boarding-top h2,
 .departure-board strong,
+.flight-board strong,
 .ticket-grid strong{
   color:#ffffff!important;
   opacity:1!important;
-  text-shadow:0 16px 34px rgba(0,0,0,.34)!important;
-}
-
-.lounge-copy p,
-.boarding-left p,
-.boarding-copy,
-.boarding-actions span{
-  color:#f2ffff!important;
-  opacity:1!important;
+  text-shadow:0 14px 30px rgba(0,0,0,.28)!important;
 }
 
 .btn-takeoff,
-.btn-gold{
+.btn-gold,
+.boarding-actions button{
+  position:relative!important;
+  z-index:20!important;
   background:linear-gradient(135deg,var(--fix-gold),#fff3ad)!important;
   color:#061625!important;
-  box-shadow:0 22px 54px rgba(255,216,106,.38)!important;
+  box-shadow:0 20px 48px rgba(255,216,106,.36)!important;
+  cursor:pointer!important;
+  pointer-events:auto!important;
 }
 
-.lounge-visual{
-  background:linear-gradient(180deg,rgba(187,239,248,.36),rgba(255,255,255,.12) 46%,rgba(3,13,23,.58) 47%)!important;
-}
-
-.terminal-window,
 .boarding-runway{
-  background:linear-gradient(180deg,rgba(130,235,248,.36),rgba(255,255,255,.10) 44%,rgba(3,14,23,.78) 58%)!important;
+  min-height:500px!important;
+  border-radius:34px!important;
+  border:1px solid rgba(255,255,255,.28)!important;
+  background:linear-gradient(180deg,rgba(127,226,240,.38),rgba(255,255,255,.16) 48%,rgba(4,70,85,.42) 49%,rgba(2,26,38,.62))!important;
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.25),0 26px 80px rgba(0,0,0,.18)!important;
+  overflow:hidden!important;
 }
 
-.departure-board,
+.boarding-runway::before{
+  content:""!important;
+  position:absolute!important;
+  inset:0!important;
+  background:repeating-linear-gradient(90deg,rgba(255,255,255,.13) 0 2px,transparent 2px 126px),radial-gradient(circle at 74% 38%,rgba(255,216,106,.22),transparent 24%)!important;
+  pointer-events:none!important;
+}
+
+.sky-glow{
+  position:absolute!important;
+  inset:0!important;
+  background:radial-gradient(circle at 72% 34%,rgba(255,255,255,.30),transparent 20%),linear-gradient(180deg,rgba(117,239,231,.18),transparent 54%)!important;
+}
+
+.glass-panel{
+  position:absolute!important;
+  left:36px!important;
+  right:36px!important;
+  top:124px!important;
+  height:230px!important;
+  border-radius:30px!important;
+  border:1px solid rgba(255,255,255,.25)!important;
+  background:linear-gradient(180deg,rgba(255,255,255,.18),rgba(255,255,255,.06))!important;
+}
+
+.soft-floor{
+  position:absolute!important;
+  left:-5%!important;
+  right:-5%!important;
+  bottom:0!important;
+  height:170px!important;
+  background:linear-gradient(180deg,rgba(255,255,255,.08),rgba(2,18,30,.62))!important;
+  transform:skewY(-2deg)!important;
+}
+
+.runway-lines,
+.fast-runway{
+  display:none!important;
+}
+
+.runway-jet{
+  right:6%!important;
+  bottom:105px!important;
+  width:min(600px,50vw)!important;
+  filter:drop-shadow(0 24px 30px rgba(0,0,0,.38))!important;
+  mix-blend-mode:normal!important;
+  opacity:.96!important;
+}
+
+.jet-shadow{
+  right:8%!important;
+  bottom:85px!important;
+  width:min(480px,42vw)!important;
+  background:rgba(0,0,0,.22)!important;
+  filter:blur(16px)!important;
+}
+
 .flight-board,
+.departure-board,
 .lounge-stats div,
 .ticket-grid div{
-  background:rgba(3,14,25,.66)!important;
-  border-color:rgba(255,255,255,.18)!important;
+  background:rgba(3,26,39,.58)!important;
+  border:1px solid rgba(255,255,255,.22)!important;
+  box-shadow:0 18px 50px rgba(0,0,0,.14)!important;
 }
 
-#closeBoarding,
-.close-boarding,
-.boarding-close,
-.boarding-overlay button[aria-label*="Close"],
-.boarding-overlay button[aria-label*="close"]{
-  background:rgba(255,255,255,.16)!important;
-  color:#fff!important;
-  border:1px solid rgba(255,255,255,.24)!important;
-  box-shadow:0 18px 50px rgba(0,0,0,.28)!important;
+.fast-takeoff{
+  background:linear-gradient(180deg,#0b6b86 0%,#87e9f5 42%,#0b3044 100%)!important;
+}
+
+.fast-sky{
+  position:absolute!important;
+  inset:0!important;
+  background:radial-gradient(circle at 70% 24%,rgba(255,255,255,.42),transparent 20%),linear-gradient(90deg,rgba(1,18,32,.28),transparent 70%)!important;
+}
+
+.fast-plane{
+  mix-blend-mode:normal!important;
+  filter:drop-shadow(0 28px 34px rgba(0,0,0,.32))!important;
 }
 
 @media (max-width:900px){
@@ -177,21 +238,14 @@
     padding:34px 26px!important;
   }
 
-  .lounge-visual,
   .boarding-runway{
-    min-height:430px!important;
-    border-left:0!important;
-    border-top:1px solid rgba(255,255,255,.16)!important;
-  }
-
-  .lounge-copy{
-    padding:34px 26px!important;
+    min-height:400px!important;
   }
 
   .lounge-logo,
   .boarding-logo-line img,
   #boardingLogo{
-    width:112px!important;
-    height:112px!important;
+    width:104px!important;
+    height:104px!important;
   }
 }
