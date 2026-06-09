@@ -3,77 +3,206 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="theme-color" content="#041521" />
+  <meta name="theme-color" content="#061625" />
   <title>Bora Bora Paradise Agency | The Perfect Tourist Experience</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800;900&family=Playfair+Display:wght@700;800;900&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="./style.css?v=100" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800;900&family=Playfair+Display:wght@700;800;900&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="./style.css?v=220" />
 </head>
 <body>
-  <div class="progress-line" id="progressLine"></div>
-  <div class="grain"></div>
+  <div class="grain" aria-hidden="true"></div>
+  <div class="scroll-progress" id="scrollProgress" aria-hidden="true"></div>
 
-  <header class="topbar" id="topbar">
-    <a class="brand" href="#hero" aria-label="Bora Bora Paradise Agency">
+  <nav class="nav" id="nav">
+    <a href="#home" class="brand" aria-label="Bora Bora Paradise Agency home">
       <img id="brandLogo" alt="Bora Bora Paradise Agency logo" />
-      <span>Bora Bora Paradise<small>Travel Agency</small></span>
+      <span>Bora Bora Paradise <small>Travel Agency</small></span>
     </a>
-    <nav class="navlinks" aria-label="Main navigation">
+    <button class="nav-toggle" id="navToggle" aria-label="Open navigation">☰</button>
+    <div class="nav-links" id="navLinks">
       <a href="#journey">Journey</a>
       <a href="#brochure">Brochure</a>
       <a href="#interactive">Interactive</a>
-      <button type="button" id="openBoarding">Boarding</button>
-    </nav>
+      <button id="openBoarding" type="button">Boarding</button>
+    </div>
+  </nav>
+
+  <aside class="flight-progress" aria-label="Journey progress">
+    <span class="flight-dot active" data-target="home">Boarding</span>
+    <span class="flight-dot" data-target="transport">Flight</span>
+    <span class="flight-dot" data-target="stay">Resort</span>
+    <span class="flight-dot" data-target="activities">Adventure</span>
+    <span class="flight-dot" data-target="food">Cuisine</span>
+    <span class="flight-dot" data-target="tips">Ready</span>
+  </aside>
+
+  <section class="boarding-overlay" id="boardingOverlay" aria-label="Waiting screen">
+    <img id="boardingBg" class="boarding-bg" alt="Bora Bora background" />
+    <div class="boarding-shade"></div>
+    <div class="boarding-plane" aria-hidden="true">✈</div>
+    <div class="boarding-card magnetic">
+      <div class="boarding-top">
+        <img id="boardingLogo" alt="Agency logo" />
+        <div>
+          <p class="eyebrow">Premium boarding lounge</p>
+          <h2>Waiting screen for the team</h2>
+        </div>
+      </div>
+      <div class="ticket-grid">
+        <div><small>Flight</small><strong>BB-1500</strong></div>
+        <div><small>Gate</small><strong>Paradise</strong></div>
+        <div><small>Destination</small><strong>Bora Bora</strong></div>
+        <div><small>Status</small><strong>Ready</strong></div>
+      </div>
+      <h1>The Perfect Tourist Experience</h1>
+      <p class="boarding-copy">Leave this screen open while the group gets ready. When the presentation starts, launch the flight and let the story begin.</p>
+      <div class="boarding-actions">
+        <button class="btn btn-gold" id="beginJourney" type="button">Begin the Journey</button>
+        <span>Enter also starts the experience</span>
+      </div>
+      <div class="boarding-marquee"><span>Now boarding • all-inclusive experience • private transfer • overwater bungalows • coral reefs • local cuisine • </span></div>
+    </div>
+  </section>
+
+  <section class="takeoff-overlay" id="takeoffOverlay" aria-hidden="true">
+    <div class="stars"></div>
+    <div class="globe-wrap">
+      <div class="orbit-ring"></div>
+      <div class="globe"><span class="bora-pin"></span><span class="orbit-plane">✈</span></div>
+    </div>
+    <div class="takeoff-copy">
+      <p class="eyebrow">Locating paradise</p>
+      <h2>Destination found:<br />Bora Bora</h2>
+      <p>Zooming into the perfect tourist experience…</p>
+    </div>
+  </section>
+
+  <header class="hero" id="home">
+    <img id="heroBg" class="hero-bg parallax-img" alt="Bora Bora lagoon at sunset" />
+    <div class="hero-overlay"></div>
+    <div class="hero-plane" aria-hidden="true">✈</div>
+    <div class="hero-inner">
+      <div class="hero-copy reveal">
+        <img id="heroLogo" class="hero-logo" alt="Agency logo" />
+        <p class="eyebrow">Bora Bora vacation brochure</p>
+        <h1>The Perfect Tourist Experience</h1>
+        <p class="lead">A premium all-inclusive travel package presented like a real agency experience: flights, private boat transfer, overwater bungalows, coral reefs, local cuisine, and travel recommendations.</p>
+        <div class="hero-actions">
+          <a class="btn btn-gold" href="#journey">Explore the Trip</a>
+          <a class="btn btn-dark" href="#brochure">View Brochure</a>
+        </div>
+      </div>
+      <div class="hero-ticket reveal delay-1 magnetic">
+        <span>Boarding pass</span>
+        <strong>BB-1500</strong>
+        <small>Destination: Bora Bora</small>
+        <div class="barcode"></div>
+      </div>
+    </div>
+    <div class="requirements reveal delay-2">
+      <span>Tourism vocabulary</span><span>Gerunds</span><span>Infinitives</span><span>Pictures</span><span>Recommendations</span>
+    </div>
   </header>
 
-  <section class="hero" id="hero">
-    <img id="heroBg" class="hero-bg" alt="Bora Bora lagoon" />
-    <div class="plane-fly">✈</div>
-    <div class="hero-content reveal">
-      <img id="heroLogo" class="hero-logo" alt="Agency logo" />
-      <p class="eyebrow">Bora Bora vacation brochure</p>
-      <h1 class="display">The Perfect Tourist<br />Experience</h1>
-      <p class="lead">A premium all-inclusive travel package presented as a real agency experience: flights, private boat transfer, overwater bungalows, coral reefs, local cuisine, and travel recommendations.</p>
-      <div class="hero-actions">
-        <a class="primary" href="#journey">Explore the Trip</a>
-        <a class="secondary" href="#brochure">View Brochure</a>
+  <main>
+    <section class="section intro-panel" id="journey">
+      <div class="section-title reveal">
+        <div>
+          <p class="eyebrow">Interactive journey</p>
+          <h2>Travel Agency Experience</h2>
+        </div>
+        <p>Each destination is a polished web section supporting the oral presentation with visuals, movement, vocabulary, grammar expressions, and a clear story flow.</p>
       </div>
-      <div class="rubric"><span>Tourism vocabulary</span><span>Gerunds</span><span>Infinitives</span><span>Pictures</span><span>Recommendations</span></div>
-    </div>
-    <div class="scroll-cue">Scroll</div>
-    <div class="hero-dock"><div class="dock-inner"><span>✈ Flight BB-1500</span><span>🏝 Destination Bora Bora</span><span>🚤 Private Transfer</span><span>🏡 Resort Stay</span><span>🏆 Most Creative Trip</span></div></div>
-  </section>
+      <div class="journey-board reveal">
+        <button class="journey-card active" data-step="0"><span>🏝</span><b>Cover</b><small>Welcome</small></button>
+        <button class="journey-card" data-step="1"><span>✈</span><b>Transportation</b><small>01</small></button>
+        <button class="journey-card" data-step="2"><span>🌴</span><b>Accommodation</b><small>02</small></button>
+        <button class="journey-card" data-step="3"><span>🐠</span><b>Activities</b><small>03</small></button>
+        <button class="journey-card" data-step="4"><span>🍍</span><b>Cuisine</b><small>04</small></button>
+        <button class="journey-card" data-step="5"><span>🧳</span><b>Recommendations</b><small>05</small></button>
+      </div>
+      <div class="stage-shell" id="stageShell"></div>
+    </section>
 
-  <div class="route-wrap"><div class="route-card reveal"><div class="route-head"><b>Live travel route</b><div class="route-plane" id="routePlane"></div></div><div class="route" id="routeButtons"></div></div></div>
+    <section class="section include-section">
+      <div class="section-title reveal">
+        <div>
+          <p class="eyebrow">What is included?</p>
+          <h2>All-inclusive package</h2>
+        </div>
+        <p>A smooth carousel makes the package feel like a real travel offer instead of a simple school poster.</p>
+      </div>
+      <div class="include-carousel reveal" id="includeCarousel"></div>
+    </section>
 
-  <main id="journey" class="section">
-    <div class="section-title reveal"><div><p class="eyebrow">Interactive journey</p><h2>Travel Agency Experience</h2></div><p>Each section supports the oral script with polished visuals, movement, vocabulary, grammar expressions, and a clear story flow.</p></div>
-    <div id="stages"></div>
-    <div class="carousel-shell reveal"><div class="carousel" id="carousel"></div></div>
+    <section class="section" id="brochure">
+      <div class="section-title reveal">
+        <div>
+          <p class="eyebrow">Final task-based output</p>
+          <h2>Six-panel Brochure</h2>
+        </div>
+        <p>All required parts are included: tourism vocabulary, gerunds, infinitives, images or drawings, and travel recommendations.</p>
+      </div>
+      <div class="brochure-grid" id="brochureGrid"></div>
+    </section>
+
+    <section class="section" id="interactive">
+      <div class="section-title reveal">
+        <div>
+          <p class="eyebrow">Creative interaction</p>
+          <h2>Build the perfect trip</h2>
+        </div>
+        <p>Interactive details help the group compete for “Most Creative Trip” while still supporting the English task.</p>
+      </div>
+      <div class="lab-grid">
+        <article class="lab-card reveal magnetic">
+          <h3>Package Builder</h3>
+          <p>Change travelers and days to create a live agency-style estimate.</p>
+          <label>Travelers <input id="travelers" type="range" min="1" max="6" value="3" /></label>
+          <label>Days <input id="days" type="range" min="3" max="10" value="5" /></label>
+          <div class="extras">
+            <label><input id="vip" type="checkbox" checked /> VIP dinner</label>
+            <label><input id="tour" type="checkbox" checked /> Adventure tour</label>
+            <label><input id="photo" type="checkbox" /> Photo package</label>
+          </div>
+          <div class="price-card"><span>Estimated package</span><strong id="price">$5,125</strong><small id="priceMeta">3 travelers • 5 days</small></div>
+        </article>
+        <article class="lab-card reveal magnetic">
+          <h3>Passport Stamps</h3>
+          <p>Click stamps after each section to make the presentation feel like a real journey.</p>
+          <div class="stamp-buttons" id="stampButtons"></div>
+          <div class="passport-wall" id="passportWall"></div>
+        </article>
+      </div>
+    </section>
+
+    <section class="section final-section" id="final">
+      <div class="final-card reveal magnetic">
+        <img id="finalBg" alt="Bora Bora final view" />
+        <div class="final-shade"></div>
+        <div class="final-content">
+          <p class="eyebrow">Class voting</p>
+          <h2>Vote for our Bora Bora package</h2>
+          <div class="awards">
+            <button>Best Adventure Trip</button>
+            <button>Best Budget Trip</button>
+            <button class="focus">Most Creative Trip</button>
+          </div>
+          <strong class="approved">Paradise experience completed</strong>
+        </div>
+      </div>
+    </section>
   </main>
 
-  <section class="section" id="brochure">
-    <div class="section-title reveal"><div><p class="eyebrow">Final task-based output</p><h2>Six-panel Brochure</h2></div><p>All required parts are included: tourism vocabulary, gerunds, infinitives, images, and travel recommendations.</p></div>
-    <div class="brochure" id="brochureGrid"></div>
-  </section>
-
-  <section class="section" id="interactive">
-    <div class="section-title reveal"><div><p class="eyebrow">Creative interaction</p><h2>Build the perfect trip</h2></div><p>This makes the project feel alive and helps the group compete for “Most Creative Trip”.</p></div>
-    <div class="creative-lab">
-      <div class="lab-card reveal"><h3>Package Builder</h3><p>Change travelers and days to create a live agency-style price estimate.</p><label>Travelers <input id="travelers" type="range" min="1" max="6" value="3"></label><label>Days <input id="days" type="range" min="3" max="10" value="5"></label><div class="extra-pills"><label><input id="vip" type="checkbox" checked> VIP dinner</label><label><input id="tour" type="checkbox" checked> Adventure tour</label><label><input id="photo" type="checkbox"> Photo package</label></div><div class="package-result"><span>Estimated package</span><strong id="price">$5,125</strong><small id="priceMeta">3 travelers • 5 days</small></div></div>
-      <div class="lab-card reveal"><h3>Passport Stamps</h3><p>Click each stamp after a section to make the presentation feel like a real journey.</p><div id="stampBtns"></div><div class="passport-wall" id="passportWall"></div></div>
+  <div class="panel-modal" id="panelModal" aria-hidden="true">
+    <div class="panel-modal-card">
+      <button id="closeModal" type="button" aria-label="Close panel">×</button>
+      <img id="modalImg" alt="Brochure panel image" />
+      <div><p class="eyebrow" id="modalTag"></p><h3 id="modalTitle"></h3><p id="modalText"></p></div>
     </div>
-  </section>
+  </div>
 
-  <section class="section"><div class="final-cta reveal"><img id="finalImg" alt="Bora Bora final"><div class="final-inner"><p class="eyebrow">Class voting</p><h2>Vote for our Bora Bora package</h2><div class="awards"><div class="award">Best Adventure Trip</div><div class="award">Best Budget Trip</div><div class="award focus">Most Creative Trip</div></div></div></div></section>
-
-  <div class="ready-overlay" id="readyOverlay"><img id="readyBg" class="ready-bg" alt="Waiting background"><div class="orbit-plane">✈</div><div class="lounge"><div class="lounge-top"><img id="readyLogo" alt="Logo"><div><b>Premium boarding lounge</b><p>Waiting screen for the team</p></div></div><div class="flight-data"><div><small>Flight</small><strong>BB-1500</strong></div><div><small>Gate</small><strong>Paradise</strong></div><div><small>Destination</small><strong>Bora Bora</strong></div><div><small>Status</small><strong>Ready</strong></div></div><h1>The Perfect Tourist Experience</h1><p>Leave this screen open while the group gets ready. Press Enter or click Begin when the presentation starts.</p><div class="lounge-actions"><button class="primary" id="beginJourney">Begin the Journey</button><span>Enter also starts the experience</span></div></div></div>
-
-  <div class="takeoff-overlay hide" id="takeoffOverlay"><div class="globe-scene"><div class="globe"><div class="world-plane">✈</div></div><div class="zoom-text"><b>Locating paradise</b><h2>Destination found:<br />Bora Bora</h2><p>Zooming into the perfect tourist experience…</p></div></div></div>
-
-  <div class="modal" id="modal"><div class="modal-card"><button id="closeModal">×</button><img id="modalImg" alt="Brochure panel"><h3 id="modalTitle"></h3><p id="modalText"></p></div></div>
-
-  <script src="./script.js?v=100"></script>
+  <script src="./script.js?v=220"></script>
 </body>
 </html>
