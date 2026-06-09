@@ -1,12 +1,13 @@
 (() => {
   const planeUrl = 'https://blogger.googleusercontent.com/img/a/AVvXsEhkWZihrmrYtXkRZqxWifnCjVokqK3yjP9FHBipau7VPJ0ER8E3vMF7klGqyiWFVlYtdzayxuMdc7MCl61srnShZ5tjvPpZXg4omFJOoRnnYSEVzLz6fMEodfhcQ6k5bcuY-CRTl3nruXz4sDuz1AwiVCqa8zw4x8OlkHb40ZIbZk1Fwd7jXcU8g5YjNiM';
+  const fallbackLogo = 'https://blogger.googleusercontent.com/img/a/AVvXsEjWkB6MBayTqkW-7taanKJGDUWxG9Uf3K8Tc1O_XJ5cSWQJ0VnmVgzBIfERE69SSnMJPc62d2sm6b8R6ln2z7_SlWspA2CI6oCq94Eb7CFDPC4n77qZKp6fyQXi2pWA-AlwIHnoCNp8DkPqOPOLgPRFlY29ep4Ai2wT0Sa-kzkAinUR8M8dwR4XJHj8rgY';
   const $ = (id) => document.getElementById(id);
 
   function rebuildBoarding() {
     const overlay = $('boardingOverlay');
     if (!overlay || overlay.dataset.emergencyFixed) return;
     const bg = (typeof imageUrls !== 'undefined' && imageUrls[0]) ? imageUrls[0] : '';
-    const logo = (typeof logoUrl !== 'undefined') ? logoUrl : '';
+    const logo = (typeof logoUrl !== 'undefined' && logoUrl) ? logoUrl : fallbackLogo;
     overlay.dataset.emergencyFixed = 'true';
     overlay.innerHTML = `
       <img class="boarding-bg" src="${bg}" alt="Bora Bora" />
@@ -20,27 +21,31 @@
         </div>
         <div class="boarding-runway" aria-hidden="true">
           <div class="flight-board"><div><small>Departures</small><strong>BB-1500</strong></div><div><small>Status</small><strong>Ready</strong></div></div>
-          <div class="runway-lines"></div><div class="jet-shadow"></div><img class="runway-jet" src="${planeUrl}" alt=""><div class="runway-lights"></div>
+          <div class="sky-glow"></div><div class="glass-panel"></div><div class="soft-floor"></div><div class="jet-shadow"></div><img class="runway-jet" src="${planeUrl}" alt="">
         </div>
       </div>`;
-    $('beginJourney')?.addEventListener('click', launchCleanTakeoff);
   }
 
   function launchCleanTakeoff() {
     const overlay = $('boardingOverlay');
     const takeoff = $('takeoffOverlay');
     if (!takeoff) return;
-    takeoff.innerHTML = `<div class="fast-takeoff"><div class="fast-copy"><p>Flight BB-1500</p><h2>Taking off<br>to Bora Bora</h2></div><div class="fast-runway"></div><img class="fast-plane" src="${planeUrl}" alt=""><div class="takeoff-white"></div></div>`;
+    takeoff.innerHTML = `<div class="fast-takeoff"><div class="fast-copy"><p>Flight BB-1500</p><h2>Taking off<br>to Bora Bora</h2></div><div class="fast-sky"></div><img class="fast-plane" src="${planeUrl}" alt=""><div class="takeoff-white"></div></div>`;
     overlay?.classList.add('is-hidden');
+    overlay?.classList.add('hidden');
     overlay?.setAttribute('aria-hidden','true');
+    document.body.classList.add('page-lock');
     takeoff.classList.add('active');
+    takeoff.classList.add('show');
     takeoff.setAttribute('aria-hidden','false');
     setTimeout(() => {
       takeoff.classList.remove('active');
+      takeoff.classList.remove('show');
       takeoff.setAttribute('aria-hidden','true');
       document.body.classList.remove('focus-mode');
+      document.body.classList.remove('page-lock');
       $('home')?.scrollIntoView({ behavior: 'smooth' });
-    }, 2300);
+    }, 2200);
   }
 
   function smoothStage(delta) {
@@ -58,8 +63,17 @@
 
   window.nextStage = () => smoothStage(1);
   window.previousStage = () => smoothStage(-1);
+  window.launchCleanTakeoff = launchCleanTakeoff;
 
   document.addEventListener('click', (e) => {
+    const launchButton = e.target.closest('#beginJourney, .btn-takeoff, .boarding-actions button');
+    if (launchButton) {
+      e.preventDefault();
+      e.stopImmediatePropagation();
+      launchCleanTakeoff();
+      return;
+    }
+
     const next = e.target.closest('#nextStep');
     const prev = e.target.closest('#prevStep');
     if (next || prev) {
@@ -84,5 +98,6 @@
       carousel.innerHTML = `<div class="carousel-track">${[...includes, ...includes].map(([icon,title,text]) => `<article class="include-card magnetic"><span>${icon}</span><div><h3>${title}</h3><p>${text}</p></div></article>`).join('')}</div>`;
     }
   }
+
   if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', boot); else boot();
 })();
