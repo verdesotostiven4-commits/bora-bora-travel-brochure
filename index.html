@@ -1,53 +1,79 @@
 <!doctype html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="theme-color" content="#03111f" />
-    <title>Bora Bora Paradise Agency | The Perfect Tourist Experience</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800;900&family=Playfair+Display:wght@700;800;900&display=swap" rel="stylesheet" />
-    <link rel="stylesheet" href="./style.css" />
-  </head>
-  <body>
-    <div class="app" id="app">
-      <section class="gate-screen" id="gateScreen" aria-label="Waiting screen">
-        <div class="gate-bg" id="gateBg"></div>
-        <div class="water-shine"></div>
-        <div class="flight-line"><span class="plane">✈</span></div>
-        <div class="gate-panel">
-          <img id="gateLogo" class="gate-logo" alt="Bora Bora Paradise Agency logo" />
-          <p class="eyebrow light">Flight BB-1500 • Now boarding</p>
-          <h1>The Perfect Tourist Experience</h1>
-          <p class="gate-copy">Welcome passengers. Your all-inclusive Bora Bora journey is ready to begin.</p>
-          <button id="beginBtn" class="begin-btn" type="button">Begin the Journey</button>
-          <small>Press Enter to start • Use arrow keys to navigate</small>
-        </div>
-        <div class="status-strip">
-          <span>Destination: Bora Bora</span><span>Gate: Paradise</span><span>Status: Ready</span>
-        </div>
-      </section>
-
-      <main class="stage" id="stage" aria-live="polite">
-        <section class="slide active" id="slideStage">
-          <img id="slideImg" class="slide-img" alt="Bora Bora scene" />
-          <div class="slide-gradient"></div>
-          <div class="route-rail" id="routeRail"></div>
-          <article class="content-card" id="contentCard"></article>
-          <aside class="passport" id="passportCard">
-            <span>Travel Passport</span>
-            <strong id="passportStamp">BORA BORA</strong>
-            <small id="passportStep">01 / 06</small>
-          </aside>
-        </section>
-
-        <nav class="controls" aria-label="Slide controls">
-          <button id="prevBtn" type="button">‹</button>
-          <button id="nextBtn" type="button">Next Destination</button>
-        </nav>
-      </main>
-    </div>
-    <script src="./script.js"></script>
-  </body>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#03111f" />
+  <title>Bora Bora Paradise Agency | The Perfect Tourist Experience</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800;900&family=Playfair+Display:wght@700;800;900&display=swap" rel="stylesheet">
+  <style>
+    :root{--navy:#03111f;--teal:#12b8b0;--aqua:#38dff0;--gold:#f4c95d;--white:#fff;--shadow:0 30px 90px rgba(0,0,0,.38)}
+    *{box-sizing:border-box} html,body{margin:0;height:100%;overflow:hidden;font-family:Inter,system-ui,sans-serif;background:#03111f;color:#fff} button{font:inherit}
+    .app{position:relative;width:100vw;height:100svh;overflow:hidden;background:#03111f}.screen{position:absolute;inset:0;overflow:hidden}.bg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;filter:saturate(1.08) contrast(1.04);transform:scale(1.04)}
+    .gate .bg{animation:kenburns 18s ease-in-out infinite alternate}.overlay{position:absolute;inset:0;background:linear-gradient(90deg,rgba(3,17,31,.9),rgba(3,17,31,.52) 45%,rgba(3,17,31,.18)),radial-gradient(circle at 80% 16%,rgba(244,201,93,.34),transparent 28%)}
+    .water{position:absolute;inset:0;background:linear-gradient(115deg,transparent 0 35%,rgba(255,255,255,.18) 48%,transparent 60%);mix-blend-mode:screen;animation:shine 6s linear infinite}.planePath{position:absolute;top:11%;left:7%;right:7%;height:130px;border-top:2px solid rgba(244,201,93,.75);border-radius:55%;transform:rotate(-6deg)}.plane{position:absolute;right:1%;top:-28px;font-size:2.6rem;filter:drop-shadow(0 12px 20px rgba(0,0,0,.38));animation:planeFloat 3s ease-in-out infinite}
+    .gate{z-index:10;display:grid;place-items:center;transition:opacity .9s ease,transform .9s ease}.gate.hidden{opacity:0;transform:scale(1.04);pointer-events:none}.gateCard{position:relative;width:min(920px,90vw);text-align:center;padding:42px 34px;border-radius:42px;background:rgba(255,255,255,.13);border:1px solid rgba(255,255,255,.25);backdrop-filter:blur(24px);box-shadow:var(--shadow)}.logo{width:142px;height:142px;object-fit:contain;border-radius:50%;padding:10px;background:rgba(255,255,255,.88);box-shadow:0 25px 70px rgba(0,0,0,.28);animation:logoFloat 4s ease-in-out infinite}.eyebrow{text-transform:uppercase;letter-spacing:.18em;font-weight:950;font-size:.78rem;color:#b7fff4;margin:18px 0 12px}.gate h1,.card h2{font-family:'Playfair Display',serif;line-height:.92;letter-spacing:-.04em;margin:0}.gate h1{font-size:clamp(3rem,8vw,7rem)}.gate p{font-size:clamp(1.05rem,2vw,1.28rem);line-height:1.7;color:#e8fbff;margin:22px auto;max-width:680px}.begin{border:0;cursor:pointer;border-radius:999px;padding:16px 30px;font-weight:950;color:#06283d;background:linear-gradient(135deg,var(--gold),#fff4ac);box-shadow:0 20px 45px rgba(244,201,93,.32);transition:.25s}.begin:hover,.nav button:hover{transform:translateY(-3px) scale(1.02)}.hint{display:block;color:#dcfbff;margin-top:16px;font-weight:800}.status{position:absolute;left:4vw;right:4vw;bottom:24px;display:grid;grid-template-columns:repeat(3,1fr);gap:12px}.status span{padding:14px 16px;border-radius:18px;background:rgba(255,255,255,.13);border:1px solid rgba(255,255,255,.18);backdrop-filter:blur(16px);text-align:center;font-weight:900;color:#eaffff}
+    .stage{opacity:0;transform:scale(.98);transition:.9s ease}.stage.ready{opacity:1;transform:none}.slideShade{position:absolute;inset:0;background:linear-gradient(90deg,rgba(3,17,31,.86),rgba(3,17,31,.42) 48%,rgba(3,17,31,.08)),linear-gradient(0deg,rgba(3,17,31,.62),transparent 45%)}.slideImg{transition:opacity .45s ease,transform 7s ease}.stage.ready .slideImg{animation:slowZoom 12s ease-in-out infinite alternate}.rail{position:absolute;top:28px;left:5vw;right:5vw;display:grid;grid-template-columns:repeat(6,1fr);gap:10px;z-index:3}.dot{height:9px;border-radius:999px;background:rgba(255,255,255,.25);overflow:hidden;cursor:pointer}.dot:after{content:"";display:block;height:100%;background:linear-gradient(90deg,var(--aqua),var(--gold));transform:scaleX(0);transform-origin:left;transition:.35s}.dot.done:after,.dot.active:after{transform:scaleX(1)}.dot.active{box-shadow:0 0 24px rgba(56,223,240,.8)}
+    .card{position:absolute;left:5vw;top:50%;transform:translateY(-50%);width:min(660px,88vw);padding:34px;border-radius:38px;background:rgba(255,255,255,.14);border:1px solid rgba(255,255,255,.26);backdrop-filter:blur(24px);box-shadow:var(--shadow)}.card.enter{animation:cardIn .55s ease both}.card h2{font-size:clamp(2.55rem,6vw,5.2rem)}.card p{font-size:clamp(1rem,1.55vw,1.18rem);line-height:1.75;color:#ebfbff}.pills{display:flex;flex-wrap:wrap;gap:10px;margin:18px 0}.pill{border-radius:999px;padding:9px 13px;font-weight:900;font-size:.84rem;color:#06283d;background:rgba(255,255,255,.9)}.key{margin-top:16px;padding:15px 18px;border-radius:22px;background:linear-gradient(135deg,rgba(244,201,93,.25),rgba(56,223,240,.18));border:1px solid rgba(255,255,255,.24);color:#fff7d6;font-weight:800}.gerund,.infinitive{font-weight:950;border-radius:8px;padding:1px 5px}.gerund{background:rgba(18,184,176,.3);color:#a7fff6}.infinitive{background:rgba(244,201,93,.32);color:#fff2a8}.passport{position:absolute;right:5vw;bottom:92px;width:260px;padding:24px;border-radius:28px;background:rgba(8,47,73,.75);border:1px solid rgba(255,255,255,.2);backdrop-filter:blur(20px);box-shadow:var(--shadow);transform:rotate(3deg)}.passport span{display:block;color:#a7f3d0;font-size:.75rem;text-transform:uppercase;letter-spacing:.14em;font-weight:950}.passport strong{display:block;margin:12px 0;font-size:1.8rem;color:var(--gold)}.passport small{color:#e0f2fe;font-weight:900}.nav{position:absolute;left:5vw;right:5vw;bottom:24px;display:flex;justify-content:space-between;align-items:center;z-index:5}.nav button{border:0;cursor:pointer;border-radius:999px;font-weight:950;transition:.25s}.prev{width:58px;height:58px;background:rgba(255,255,255,.16);border:1px solid rgba(255,255,255,.28)!important;color:white;font-size:2rem;backdrop-filter:blur(16px)}.next{padding:17px 28px;color:#06283d;background:linear-gradient(135deg,var(--gold),#fff2a7);box-shadow:0 20px 45px rgba(244,201,93,.3)}.final .card{text-align:center;left:50%;transform:translate(-50%,-50%);width:min(860px,90vw)}.final .passport{display:none}.awardGrid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:18px}.award{padding:16px;border-radius:20px;background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.2);font-weight:900}.award.big{background:linear-gradient(135deg,rgba(244,201,93,.32),rgba(56,223,240,.2));box-shadow:0 0 45px rgba(244,201,93,.22)}
+    @keyframes kenburns{to{transform:scale(1.14) translateX(-1.5%)}}@keyframes slowZoom{to{transform:scale(1.09)}}@keyframes shine{from{transform:translateX(-130%)}to{transform:translateX(130%)}}@keyframes logoFloat{50%{transform:translateY(-10px)}}@keyframes planeFloat{50%{transform:translateY(-13px) rotate(4deg)}}@keyframes cardIn{from{opacity:0;transform:translateY(-46%) translateX(-24px)}to{opacity:1;transform:translateY(-50%) translateX(0)}}
+    @media(max-width:820px){.gateCard{padding:30px 20px}.status{grid-template-columns:1fr;bottom:12px}.rail{top:16px}.card{left:4vw;right:4vw;width:auto;padding:24px}.passport{right:4vw;bottom:96px;width:205px}.nav{left:4vw;right:4vw}.awardGrid{grid-template-columns:1fr}.gate h1{font-size:3.2rem}.card h2{font-size:2.8rem}}
+  </style>
+</head>
+<body>
+  <div class="app">
+    <section class="screen gate" id="gate">
+      <img class="bg" id="gateBg" alt="Bora Bora waiting background">
+      <div class="overlay"></div><div class="water"></div><div class="planePath"><span class="plane">✈</span></div>
+      <div class="gateCard">
+        <img class="logo" id="logo" alt="Bora Bora Paradise Agency logo">
+        <p class="eyebrow">Flight BB-1500 • Now Boarding</p>
+        <h1>The Perfect Tourist Experience</h1>
+        <p>Welcome passengers. Your all-inclusive Bora Bora journey is ready to begin.</p>
+        <button class="begin" id="begin">Begin the Journey</button>
+        <small class="hint">Press Enter to start • Arrow keys to navigate</small>
+      </div>
+      <div class="status"><span>Destination: Bora Bora</span><span>Gate: Paradise</span><span>Status: Ready</span></div>
+    </section>
+    <main class="screen stage" id="stage">
+      <img class="bg slideImg" id="slideImg" alt="Bora Bora scene">
+      <div class="slideShade"></div>
+      <div class="rail" id="rail"></div>
+      <article class="card" id="card"></article>
+      <aside class="passport" id="passport"><span>Travel Passport</span><strong id="stamp">BORA BORA</strong><small id="step">01 / 06</small></aside>
+      <nav class="nav"><button class="prev" id="prev">‹</button><button class="next" id="next">Next Destination</button></nav>
+    </main>
+  </div>
+  <script>
+    const ASSETS={
+      logo:'https://blogger.googleusercontent.com/img/a/AVvXsEjWkB6MBayTqkW-7taanKJGDUWxG9Uf3K8Tc1O_XJ5cSWQJ0VnmVgzBIfERE69SSnMJPc62d2sm6b8R6ln2z7_SlWspA2CI6oCq94Eb7CFDPC4n77qZKp6fyQXi2pWA-AlwIHnoCNp8DkPqOPOLgPRFlY29ep4Ai2wT0Sa-kzkAinUR8M8dwR4XJHj8rgY',
+      cover:'https://blogger.googleusercontent.com/img/a/AVvXsEgZGKnUaGAWzJvRX9f44MycnHeHOFY0YVssmU7kfROdXM143hKxdwqYv-HfhBjCEmko58ZEDLeQHysVibasU3a1uuGUbJ_A-moZ27r1qpEh2Q3LRYWm5OVyZ7EfWINIiqoCNT9NWUgNZ1rrGqVLZA2O2Cb-CROg-aM-Q8U4-Q0Mw2K3DwILuHpqxR60Kbc',
+      transport:'https://blogger.googleusercontent.com/img/a/AVvXsEhgtnAHlUSTawoBPZbyLQoK9EmoziGbfQr2yuL9c90W-bk1Rzjasbpur1uxRvrCi1MkuAwIGr2gjqtPOC1-_PqmEUCIFL7CcVt5k9mKYXg2b3DGcBaRpnUeNJJOe6-H0e1W-Y2_ER-_K9D6U-ELHE76suymzS2poc8SjjD6hokJkvO93lmJJz5ElieEA5c',
+      stay:'https://blogger.googleusercontent.com/img/a/AVvXsEhlTgsv1HVYk3vT2SqnkMf7ceN9pdtKju_k9Cat5zHRZFXRzUtTOsl9HmHJ9iNqhKn6gCEjrok-Yiu8XN3pMboba2ygZAtht8ujQdBrq5ZgBFsu6Vx-7oeEoxvQdcuXeqq6QtaWyXuPcmPDfsDtALgEwm2nnTCCYRk5SfNAooCLOmT2qr3vtGhacTYuKGg',
+      adventure:'https://blogger.googleusercontent.com/img/a/AVvXsEh55YaGwaCKKxn5IfPhAZh2yyOTiI_4Iv5qM0dyBi1-mxDF8T6Om8nCCQq840vxgvbfxrkPSU43WLKbPhJmYOHtT17ykRz9rqsgjFLvvBgb_6zuQc12UxflfchSafOoC9T8FDyzbzPJo16uTUgzRoftaKxWNKquiO_12yBLZQn8D9OJui4todE2oUMBqbY',
+      food:'https://blogger.googleusercontent.com/img/a/AVvXsEiiVs8w8C4fBdLlFgKPLtWMFpzeluF5C6MLdX1EzBFGq1F4TbEWXwzfYg-hZ6SuH8grPbdGUSGBi-dYfY6FOPl_12P6yuzD9eiEkoMQ6kilXjM_QmiJIJtOxHofbZVa-0V9Y1bD4CZc8VMOVAx1YSDDOpp_HUpEAsQi6KjmqsEcm6hUJgGIy9r0f8UiNp8',
+      tips:'https://blogger.googleusercontent.com/img/a/AVvXsEhCm8k6D37rHT_BsHD06hXc1FimVqGzQYyWXzCg3NkIV6VQlrSbVr5fu_IYUfUMfj_KJLD65O3yGCtzGC2zWcd9zlcTG9PQwgg4L7wlT_5UvyUidNPEtd3HTQ3fCwnBvAPVPTJrHfEg3bn7ARZ7mMIG1zjdgjC3RVo6MVlEGcE7ASHk_Ly95M-aSASuWFI'
+    };
+    const slides=[
+      {img:ASSETS.cover,stamp:'WELCOME',title:'Bora Bora Paradise',tag:'The journey begins',text:'A complete <b>all-inclusive</b> experience designed for travelers who <span class="infinitive">want to visit</span> a true paradise.',pills:['3-day vacation','all-inclusive package','turquoise lagoon','premium agency'],key:'Infinitive: want to visit'},
+      {img:ASSETS.transport,stamp:'ARRIVAL',title:'Intro & Transportation',tag:'From airport to island',text:'The package includes <b>round-trip flights</b> and a private boat transfer. Travelers just <span class="infinitive">need to book</span> and enjoy the arrival.',pills:['round-trip flights','private boat transfer','airport arrival','island route'],key:'Infinitive: need to book'},
+      {img:ASSETS.stay,stamp:'RESORT',title:'Premium Accommodation',tag:'Overwater comfort',text:'Guests <span class="infinitive">decide to stay</span> in exclusive overwater bungalows surrounded by crystal-clear waters and premium comfort.',pills:['Four Seasons Resort','overwater bungalow','crystal-clear waters','premium comfort'],key:'Infinitives: decide to stay • plan to travel'},
+      {img:ASSETS.adventure,stamp:'ADVENTURE',title:'Adventure & Mount Otemanu',tag:'Explore the ocean',text:'Travelers will <span class="gerund">love exploring</span> coral reefs and <span class="gerund">enjoy visiting</span> white-sand beaches near Mount Otemanu.',pills:['coral reefs','tropical fish','snorkeling','Mount Otemanu'],key:'Gerunds: love exploring • enjoy visiting'},
+      {img:ASSETS.food,stamp:'CUISINE',title:'Local Cuisine & Pricing',tag:'Taste of paradise',text:'The package includes all meals with fresh seafood, grilled fish, and tropical fruits. Total price: <b>$1,500 per person</b>.',pills:['fresh seafood','grilled fish','tropical fruits','$1,500 per person'],key:'Gerund: prefer backpacking • Infinitive: hope to see'},
+      {img:ASSETS.tips,stamp:'READY',title:'Travel Recommendations',tag:'Before departure',text:'Pack light clothes, passport, tickets, sunscreen, camera, and booking confirmation. <span class="gerund">Avoid traveling</span> with heavy winter clothes.',pills:['passport','tickets','sunscreen','camera','light clothes'],key:'Gerund: avoid traveling'},
+      {img:ASSETS.cover,stamp:'VOTE',title:'Vote for Paradise',tag:'Final destination',text:'This trip combines luxury, adventure, food, transportation, and recommendations in one creative travel experience.',pills:[],key:'<div class="awardGrid"><div class="award">🏆 Best Adventure Trip</div><div class="award">🏆 Best Budget Trip</div><div class="award big">🏆 Most Creative Trip</div></div>',final:true}
+    ];
+    const gate=document.getElementById('gate'),stage=document.getElementById('stage'),img=document.getElementById('slideImg'),card=document.getElementById('card'),rail=document.getElementById('rail'),stamp=document.getElementById('stamp'),step=document.getElementById('step');
+    document.getElementById('logo').src=ASSETS.logo;document.getElementById('gateBg').src=ASSETS.cover;let i=0,started=false;
+    rail.innerHTML=slides.slice(0,6).map((_,n)=>`<button class="dot" data-i="${n}" aria-label="Go to destination ${n+1}"></button>`).join('');
+    rail.querySelectorAll('.dot').forEach(b=>b.onclick=()=>{i=+b.dataset.i;render()});
+    function start(){started=true;gate.classList.add('hidden');stage.classList.add('ready');render()}
+    function render(){const s=slides[i];document.body.classList.toggle('final',!!s.final);img.style.opacity=.15;setTimeout(()=>{img.src=s.img;img.style.opacity=1},90);card.classList.remove('enter');void card.offsetWidth;card.classList.add('enter');card.innerHTML=`<p class="eyebrow">${s.tag}</p><h2>${s.title}</h2><p>${s.text}</p>${s.pills.length?`<div class="pills">${s.pills.map(p=>`<span class="pill">${p}</span>`).join('')}</div>`:''}<div class="key">${s.key}</div>`;stamp.textContent=s.stamp;step.textContent=`${String(Math.min(i+1,6)).padStart(2,'0')} / 06`;rail.querySelectorAll('.dot').forEach((d,n)=>{d.classList.toggle('active',n===i);d.classList.toggle('done',n<i)});document.getElementById('next').textContent=i===slides.length-1?'Back to Boarding':'Next Destination'}
+    function next(){if(!started)return start();i=(i+1)%slides.length;render()}function prev(){if(!started)return;i=(i-1+slides.length)%slides.length;render()}
+    document.getElementById('begin').onclick=start;document.getElementById('next').onclick=next;document.getElementById('prev').onclick=prev;
+    document.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '||e.key==='ArrowRight')next();if(e.key==='ArrowLeft')prev();});
+    render();
+  </script>
+</body>
 </html>
