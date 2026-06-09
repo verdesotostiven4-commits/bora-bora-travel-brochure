@@ -1,0 +1,145 @@
+/* Rescue layer: fixes the broken entry view and makes the experience clean on desktop */
+:root{
+  --rescue-ink:#061625;
+  --rescue-deep:#020914;
+  --rescue-teal:#18c7bf;
+  --rescue-gold:#ffdc73;
+  --rescue-paper:#fffaf0;
+}
+
+.cursor-glow,
+.presentation-help{display:none!important;opacity:0!important;visibility:hidden!important}
+body{cursor:auto!important;overflow-x:hidden!important;background:linear-gradient(180deg,#f5fffc 0%,#fff7e9 50%,#f4fffc 100%)!important}
+body.page-lock{overflow:hidden!important}
+
+/* Force the first screen to behave like a real full-screen welcome, not a broken overlay */
+.boarding-overlay{
+  position:fixed!important;
+  inset:0!important;
+  z-index:9999!important;
+  width:100vw!important;
+  height:100vh!important;
+  min-height:100vh!important;
+  display:flex!important;
+  align-items:center!important;
+  justify-content:center!important;
+  overflow:hidden!important;
+  background:#031321!important;
+  opacity:1!important;
+  visibility:visible!important;
+  pointer-events:auto!important;
+  padding:0!important;
+}
+.boarding-overlay.hidden{
+  opacity:0!important;
+  visibility:hidden!important;
+  pointer-events:none!important;
+  transform:none!important;
+}
+.boarding-overlay::before,
+.boarding-overlay::after{display:none!important;content:none!important}
+.boarding-bg{
+  position:absolute!important;
+  inset:0!important;
+  width:100%!important;
+  height:100%!important;
+  object-fit:cover!important;
+  opacity:.48!important;
+  filter:saturate(1.08) contrast(1.02) brightness(.72)!important;
+  transform:scale(1.04)!important;
+}
+.boarding-shade{display:block!important;position:absolute!important;inset:0!important;background:linear-gradient(90deg,rgba(1,8,15,.92),rgba(2,20,32,.72) 48%,rgba(4,64,80,.42))!important;z-index:1!important}
+.boarding-plane{display:none!important}
+
+.boarding-card.clean-lounge{
+  position:relative!important;
+  z-index:3!important;
+  width:min(1340px,88vw)!important;
+  height:min(760px,82vh)!important;
+  min-height:620px!important;
+  margin:auto!important;
+  display:grid!important;
+  grid-template-columns:.88fr 1.12fr!important;
+  gap:0!important;
+  overflow:hidden!important;
+  border-radius:42px!important;
+  background:rgba(255,255,255,.08)!important;
+  border:1px solid rgba(255,255,255,.22)!important;
+  box-shadow:0 50px 160px rgba(0,0,0,.48)!important;
+  backdrop-filter:blur(22px) saturate(1.1)!important;
+  transform:none!important;
+  padding:0!important;
+}
+.boarding-card.clean-lounge::before,.boarding-card.clean-lounge::after{display:none!important;content:none!important}
+.clean-copy{padding:46px 48px 40px!important;display:flex!important;flex-direction:column!important;justify-content:space-between!important;min-width:0!important}
+.clean-brand{display:flex!important;align-items:center!important;gap:18px!important}
+.clean-logo,.brand img,.hero-logo,.final-brand-logo{background:transparent!important;border:0!important;box-shadow:none!important;padding:0!important;object-fit:contain!important;filter:drop-shadow(0 18px 28px rgba(0,0,0,.28))!important}
+.clean-logo{width:118px!important;height:118px!important;flex:0 0 auto!important}
+.clean-brand span{display:block!important;text-transform:uppercase!important;color:#a9fff8!important;letter-spacing:.18em!important;font-size:.72rem!important;font-weight:950!important}
+.clean-brand strong{display:block!important;color:white!important;font-size:1.08rem!important;margin-top:6px!important}
+.clean-copy h1{font-family:"Playfair Display",serif!important;color:white!important;font-size:clamp(4.4rem,6.4vw,7.4rem)!important;line-height:.86!important;letter-spacing:-.075em!important;margin:26px 0 16px!important;max-width:650px!important;filter:drop-shadow(0 24px 45px rgba(0,0,0,.34))!important}
+.clean-copy p{color:#eaffff!important;font-weight:750!important;font-size:1rem!important;line-height:1.62!important;max-width:620px!important;margin:0 0 22px!important}
+.clean-actions{display:flex!important;align-items:center!important;gap:12px!important;flex-wrap:wrap!important}
+.clean-start{border:0!important;border-radius:999px!important;padding:16px 28px!important;background:linear-gradient(135deg,var(--rescue-gold),#fff0ad)!important;color:#071827!important;font-weight:950!important;cursor:pointer!important;box-shadow:0 24px 56px rgba(255,220,115,.34)!important;transition:transform .25s ease,box-shadow .25s ease!important}
+.clean-start:hover{transform:translateY(-3px)!important;box-shadow:0 28px 70px rgba(255,220,115,.44)!important}
+.clean-meta{display:flex!important;flex-wrap:wrap!important;gap:9px!important;margin-top:20px!important}
+.clean-meta span{display:inline-flex!important;border-radius:999px!important;padding:9px 13px!important;background:rgba(255,255,255,.1)!important;border:1px solid rgba(255,255,255,.14)!important;color:#eaffff!important;font-size:.78rem!important;font-weight:900!important}
+.clean-ticker{overflow:hidden!important;border-radius:999px!important;border:1px solid rgba(255,255,255,.12)!important;background:rgba(2,13,24,.58)!important;color:#a9fff8!important;font-size:.76rem!important;font-weight:950!important;letter-spacing:.16em!important;text-transform:uppercase!important;white-space:nowrap!important}
+.clean-ticker span{display:inline-block!important;padding:13px 0!important;animation:cleanMarquee 18s linear infinite!important}
+
+.clean-terminal{position:relative!important;min-height:100%!important;border-left:1px solid rgba(255,255,255,.14)!important;background:linear-gradient(180deg,rgba(192,243,255,.24),rgba(255,255,255,.07) 45%,rgba(2,11,20,.78) 46%)!important;overflow:hidden!important}
+.clean-terminal::before{content:""!important;position:absolute!important;inset:0!important;background:repeating-linear-gradient(90deg,rgba(255,255,255,.13) 0 2px,transparent 2px 124px)!important;opacity:.55!important}
+.clean-departure{position:absolute!important;left:32px!important;right:32px!important;top:32px!important;z-index:4!important;display:flex!important;align-items:center!important;justify-content:space-between!important;gap:16px!important;padding:16px 18px!important;border-radius:24px!important;background:rgba(2,14,25,.72)!important;border:1px solid rgba(255,255,255,.15)!important;color:white!important}
+.clean-departure small{display:block!important;text-transform:uppercase!important;color:#a9fff8!important;letter-spacing:.16em!important;font-weight:950!important;font-size:.67rem!important}
+.clean-departure strong{font-size:1.12rem!important}
+.clean-window{position:absolute!important;left:32px!important;right:32px!important;top:114px!important;height:300px!important;border-radius:30px!important;border:1px solid rgba(255,255,255,.2)!important;background:linear-gradient(180deg,rgba(136,228,245,.26),rgba(255,255,255,.07)),radial-gradient(circle at 75% 46%,rgba(255,220,115,.24),transparent 21%)!important;overflow:hidden!important}
+.clean-window::after{content:""!important;position:absolute!important;inset:0!important;background:linear-gradient(115deg,transparent 0 34%,rgba(255,255,255,.24) 45%,transparent 56%)!important;animation:cleanGlass 3.8s ease-in-out infinite!important}
+.clean-floor{position:absolute!important;left:-8%!important;right:-8%!important;bottom:0!important;height:230px!important;background:linear-gradient(180deg,rgba(3,17,29,.1),rgba(1,8,15,.95))!important;transform:skewY(-2.5deg)!important;transform-origin:left bottom!important}
+.clean-runway{position:absolute!important;left:48px!important;right:48px!important;bottom:178px!important;height:5px!important;background:repeating-linear-gradient(90deg,#fff 0 48px,transparent 48px 88px)!important;transform:rotate(-3deg)!important;opacity:.82!important}
+.clean-plane{position:absolute!important;right:72px!important;bottom:214px!important;z-index:6!important;font-size:5.6rem!important;color:white!important;filter:drop-shadow(0 28px 34px rgba(0,0,0,.44))!important;transform:rotate(-10deg)!important;animation:cleanPlaneIdle 3.4s ease-in-out infinite!important}
+.clean-bridge{position:absolute!important;right:220px!important;bottom:242px!important;width:220px!important;height:28px!important;border-radius:18px!important;background:linear-gradient(90deg,rgba(255,255,255,.94),rgba(194,224,231,.68))!important;transform:skewX(-13deg)!important;z-index:5!important}
+.clean-queue{position:absolute!important;left:76px!important;right:340px!important;bottom:210px!important;height:90px!important;z-index:6!important}
+.clean-person{position:absolute!important;bottom:0!important;width:15px!important;height:15px!important;border-radius:50%!important;background:rgba(245,255,255,.96)!important;box-shadow:0 22px 0 rgba(245,255,255,.96),0 46px 0 -5px rgba(245,255,255,.78)!important;animation:cleanWalk 4.8s linear infinite!important}
+.clean-person:nth-child(1){left:0;animation-delay:0s!important}.clean-person:nth-child(2){left:20%;animation-delay:.55s!important}.clean-person:nth-child(3){left:40%;animation-delay:1.1s!important}.clean-person:nth-child(4){left:60%;animation-delay:1.65s!important}.clean-person:nth-child(5){left:80%;animation-delay:2.2s!important}
+.clean-stats{position:absolute!important;left:32px!important;right:32px!important;bottom:32px!important;display:grid!important;grid-template-columns:repeat(4,1fr)!important;gap:12px!important;z-index:7!important}
+.clean-stats div{padding:13px 14px!important;border-radius:18px!important;background:rgba(255,255,255,.1)!important;border:1px solid rgba(255,255,255,.14)!important;color:white!important}
+.clean-stats small{display:block!important;text-transform:uppercase!important;color:#a9fff8!important;letter-spacing:.13em!important;font-weight:950!important;font-size:.65rem!important}.clean-stats b{display:block!important;margin-top:4px!important;font-size:.94rem!important}
+
+/* Clean takeoff transition */
+.takeoff-overlay{position:fixed!important;inset:0!important;z-index:9998!important;opacity:0!important;visibility:hidden!important;pointer-events:none!important;background:#061625!important;transition:opacity .35s ease,visibility .35s ease!important;overflow:hidden!important}
+.takeoff-overlay.show{opacity:1!important;visibility:visible!important;pointer-events:auto!important}
+.clean-takeoff{position:absolute!important;inset:0!important;background:linear-gradient(180deg,#061725 0%,#0b3145 42%,#06121d 43%,#020813 100%)!important;color:white!important;overflow:hidden!important}
+.clean-takeoff::before{content:""!important;position:absolute!important;inset:0!important;background:radial-gradient(circle at 68% 20%,rgba(24,199,191,.24),transparent 32%),linear-gradient(90deg,rgba(1,8,16,.9),transparent 60%)!important}
+.clean-flight-title{position:absolute!important;left:7vw!important;top:13vh!important;z-index:5!important;max-width:620px!important}
+.clean-flight-title span{display:block!important;color:#a9fff8!important;text-transform:uppercase!important;letter-spacing:.22em!important;font-weight:950!important;margin-bottom:16px!important}
+.clean-flight-title h2{font-family:"Playfair Display",serif!important;font-size:clamp(4.6rem,7.5vw,8.2rem)!important;line-height:.85!important;letter-spacing:-.07em!important;margin:0!important;color:white!important}
+.clean-flight-title p{font-weight:800!important;line-height:1.55!important;color:#eaffff!important;max-width:430px!important;margin-top:18px!important}
+.clean-runway-scene{position:absolute!important;right:6vw!important;top:10vh!important;width:min(740px,44vw)!important;height:76vh!important;border-radius:42px!important;overflow:hidden!important;border:1px solid rgba(255,255,255,.2)!important;background:linear-gradient(180deg,rgba(255,255,255,.18),rgba(255,255,255,.07) 40%,rgba(1,8,15,.82) 41%)!important;box-shadow:0 50px 150px rgba(0,0,0,.42)!important}
+.clean-runway-scene::before{content:""!important;position:absolute!important;inset:0!important;background:repeating-linear-gradient(90deg,rgba(255,255,255,.13) 0 2px,transparent 2px 118px)!important}
+.clean-flight-board{position:absolute!important;left:30px!important;right:30px!important;top:30px!important;z-index:4!important;border-radius:18px!important;padding:13px 18px!important;background:rgba(2,14,25,.72)!important;border:1px solid rgba(255,255,255,.15)!important;color:#bffff8!important;font-weight:950!important;letter-spacing:.15em!important;text-transform:uppercase!important}
+.clean-runway-lane{position:absolute!important;left:-14%!important;right:-14%!important;bottom:98px!important;height:168px!important;background:linear-gradient(180deg,rgba(10,31,45,.12),rgba(1,7,12,.95))!important;transform:skewY(-4deg)!important}
+.clean-runway-lane::after{content:""!important;position:absolute!important;left:0!important;right:0!important;top:50%!important;height:6px!important;background:repeating-linear-gradient(90deg,#fff 0 60px,transparent 60px 116px)!important;animation:cleanRunway .17s linear infinite!important}
+.clean-taxi-plane{position:absolute!important;left:9%!important;bottom:206px!important;z-index:5!important;font-size:7rem!important;filter:drop-shadow(0 28px 34px rgba(0,0,0,.52))!important;transform:rotate(-9deg)!important}
+.takeoff-overlay.show .clean-taxi-plane{animation:cleanTakeoff 3.25s cubic-bezier(.16,.8,.12,1) forwards!important}
+.clean-speed{position:absolute!important;left:5%!important;bottom:198px!important;width:230px!important;height:28px!important;border-radius:50%!important;background:rgba(255,255,255,.26)!important;filter:blur(11px)!important;opacity:.75!important}.takeoff-overlay.show .clean-speed{animation:cleanWake 2.5s ease forwards!important}
+.clean-cloud{position:absolute!important;inset:0!important;z-index:8!important;background:linear-gradient(90deg,transparent,rgba(255,255,255,.94),transparent)!important;transform:translateX(-130%)!important}.takeoff-overlay.show .clean-cloud{animation:cleanCloud 1.45s ease 1.75s forwards!important}
+
+/* Desktop layout rescue */
+.nav{z-index:90!important;max-width:1280px!important;width:min(1280px,82vw)!important;height:62px!important;top:20px!important;padding:7px 12px!important}
+.nav .brand img{width:48px!important;height:48px!important}.nav-links a,.nav-links button{font-size:.88rem!important;padding:9px 15px!important}
+.hero{min-height:100vh!important;padding:138px 0 110px!important;overflow:hidden!important}.hero-inner{width:min(1280px,86vw)!important;grid-template-columns:minmax(0,1fr) 280px!important;gap:38px!important}.hero-copy h1{font-size:clamp(4.6rem,7.2vw,8rem)!important}.hero-logo{width:102px!important;height:102px!important}.hero-ticket{width:260px!important;min-height:196px!important;margin-bottom:30px!important}.requirements{bottom:24px!important;width:min(780px,58vw)!important;max-height:44px!important;overflow:hidden!important;opacity:.72!important}
+.journey-board{width:min(980px,72vw)!important;grid-template-columns:repeat(6,minmax(88px,1fr))!important;gap:7px!important;padding:8px!important;margin:0 auto 36px!important}.journey-card{min-height:58px!important;padding:8px!important;border-radius:16px!important}.journey-card span{display:none!important}.journey-card b{font-size:.78rem!important}.journey-card small{font-size:.64rem!important}.stage-shell{width:min(1240px,84vw)!important;grid-template-columns:minmax(0,1fr) minmax(380px,.82fr)!important;gap:26px!important}.stage-media{min-height:450px!important}.stage-text{padding:34px!important}.stage-text h3{font-size:clamp(2.5rem,3.9vw,4.4rem)!important}.stage-text p{font-size:.96rem!important}.section{padding:110px 0!important}.section-title h2{font-size:clamp(3.8rem,5.8vw,6.4rem)!important}
+.include-carousel.auto-loop{overflow:hidden!important}.include-carousel.auto-loop::before,.include-carousel.auto-loop::after{width:110px!important}.loop-track{display:flex!important;width:max-content!important;gap:18px!important;animation:cleanLoop 30s linear infinite!important}.loop-card{width:310px!important;min-height:172px!important;padding:24px!important;border-radius:26px!important}
+.brochure-grid{width:min(1180px,84vw)!important;grid-template-columns:repeat(3,minmax(0,1fr))!important;gap:20px!important}.brochure-card{min-height:330px!important;padding:16px!important;border-radius:24px!important}.brochure-card img{height:130px!important;border-radius:18px!important}.brochure-card h3{font-size:1.12rem!important}.brochure-card p{font-size:.84rem!important;line-height:1.5!important;-webkit-line-clamp:3!important}
+.final-card{min-height:620px!important;border-radius:38px!important}.final-content h2{font-size:clamp(4rem,6.2vw,7rem)!important}.approved{margin-top:20px!important}
+
+@media(max-width:1100px){.boarding-card.clean-lounge{grid-template-columns:1fr!important;height:auto!important;min-height:auto!important}.clean-terminal{display:none!important}.clean-copy{padding:38px!important}.clean-copy h1{font-size:4rem!important}.clean-runway-scene{display:none!important}.clean-flight-title{left:8vw!important;right:8vw!important;max-width:none!important}.stage-shell,.hero-inner{grid-template-columns:1fr!important}.hero-ticket{display:none!important}.journey-board{grid-template-columns:repeat(3,1fr)!important;width:min(760px,90vw)!important}.requirements{display:none!important}}
+@keyframes cleanMarquee{to{transform:translateX(-50%)}}
+@keyframes cleanGlass{0%,100%{transform:translateX(-35%);opacity:.24}50%{transform:translateX(35%);opacity:.55}}
+@keyframes cleanPlaneIdle{0%,100%{transform:translateY(0) rotate(-10deg)}50%{transform:translateY(-7px) rotate(-8deg)}}
+@keyframes cleanWalk{0%{transform:translateX(-18px);opacity:0}14%,82%{opacity:1}100%{transform:translateX(245px);opacity:0}}
+@keyframes cleanRunway{to{background-position:-116px 0}}
+@keyframes cleanTakeoff{0%{transform:translate(0,0) rotate(-9deg) scale(1)}36%{transform:translate(230px,-18px) rotate(-7deg) scale(1.05)}72%{transform:translate(470px,-160px) rotate(-15deg) scale(1.15)}100%{transform:translate(720px,-430px) rotate(-21deg) scale(1.22);opacity:0}}
+@keyframes cleanWake{to{opacity:0;transform:translateX(360px) scaleX(2.6)}}
+@keyframes cleanCloud{to{transform:translateX(130%)}}
+@keyframes cleanLoop{to{transform:translateX(-50%)}}
