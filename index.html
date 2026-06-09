@@ -1,0 +1,105 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#07111f" />
+    <title>Bora Bora Travel Brochure | The Perfect Tourist Experience</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800;900&family=Playfair+Display:wght@700;800&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="./style.css" />
+  </head>
+  <body>
+    <div class="ocean-bg" aria-hidden="true"><span></span><span></span><span></span><span></span></div>
+
+    <header class="topbar">
+      <a class="brand" href="#home" aria-label="Go to cover">
+        <span class="brand-mark">✈</span>
+        <span><strong>Bora Bora Paradise Agency</strong><small>The Perfect Tourist Experience</small></span>
+      </a>
+      <nav class="nav-actions" aria-label="Presentation controls">
+        <button id="modeBtn" class="ghost-btn" type="button">🎬 Presentation Mode</button>
+        <button id="grammarBtn" class="ghost-btn" type="button">✨ Highlight Grammar</button>
+        <button id="printBtn" class="gold-btn" type="button">🖨 Print Brochure</button>
+      </nav>
+    </header>
+
+    <main id="home">
+      <section class="hero section-shell">
+        <div class="hero-copy reveal">
+          <p class="eyebrow">Travel Fair Mini Presentation • 2–3 minutes</p>
+          <h1>The Perfect Tourist Experience</h1>
+          <p class="lead">A luxury all-inclusive Bora Bora vacation package designed to win <strong>Best Adventure Trip</strong>, <strong>Best Budget Trip</strong>, and especially <strong>Most Creative Trip</strong>.</p>
+          <div class="hero-actions">
+            <button class="primary-btn" id="startBtn" type="button">Start the Trip ✨</button>
+            <a class="secondary-btn" href="#brochure">View Brochure</a>
+          </div>
+          <div class="mini-rubric" aria-label="Required elements">
+            <span>✅ Tourism vocabulary</span><span>✅ Gerunds</span><span>✅ Infinitives</span><span>✅ Pictures / drawings</span><span>✅ Recommendations</span>
+          </div>
+        </div>
+        <div class="hero-visual reveal delay-1" aria-label="Illustrated tropical island">
+          <div class="sun"></div><div class="cloud c1"></div><div class="cloud c2"></div><div class="island"><span class="palm">🌴</span><span class="hut">🏝️</span><span class="boat">⛵</span></div>
+          <div class="ticket-card"><small>Vacation Package</small><strong>$1,500</strong><span>per person • 5 days</span></div>
+          <div class="passport-stamp">VIP<br/>BORA BORA</div>
+        </div>
+      </section>
+
+      <section class="section-shell deck-wrap" id="presentation">
+        <div class="section-title reveal"><p class="eyebrow">Interactive presentation</p><h2>Travel Fair Pitch Deck</h2><p>Use the buttons or keyboard arrows to present like a real travel agency.</p></div>
+        <div class="deck reveal delay-1">
+          <aside class="deck-sidebar">
+            <div class="progress-ring"><span id="slideNumber">1/6</span></div>
+            <div id="slideDots" class="slide-dots"></div>
+            <p class="tip">Tip: press ← / → to change slides.</p>
+          </aside>
+          <article class="slide-card" id="slideCard" aria-live="polite"></article>
+        </div>
+        <div class="deck-controls reveal delay-2">
+          <button id="prevSlide" class="secondary-btn" type="button">← Back</button>
+          <button id="nextSlide" class="primary-btn" type="button">Next →</button>
+        </div>
+      </section>
+
+      <section class="section-shell" id="brochure">
+        <div class="section-title reveal"><p class="eyebrow">Final task-based output</p><h2>Travel Agency Brochure</h2><p>Six panels inspired by a professional tri-fold brochure.</p></div>
+        <div class="brochure-grid">
+          <article class="panel reveal"><span class="panel-label">Panel 1 • Front Cover</span><h3>“The Perfect Tourist Experience”</h3><p>Bora Bora All-Inclusive Package</p><div class="image-box lagoon">Aerial lagoon + Mount Otemanu drawing</div><small>Prepared by: Janela Jiménez, Katty Toaza, Monica Sanchez, and Lesly Escobar</small></article>
+          <article class="panel reveal"><span class="panel-label">Panel 2 • Transportation</span><h3>Getting to Paradise</h3><p>If you <b class="infinitive">want to visit</b> a true paradise, this all-inclusive package is the best choice. You <b class="infinitive">need to book</b> in advance.</p><p>Round-trip flights and a private luxury boat transfer are included.</p><div class="image-box plane">Plane + boat transfer drawing</div></article>
+          <article class="panel reveal"><span class="panel-label">Panel 3 • Accommodation</span><h3>Premium Accommodation</h3><p>You will lodge at a famous resort. When you <b class="infinitive">decide to stay</b> in exclusive overwater bungalows, you get comfort and style.</p><p>It is perfect for travelers who <b class="infinitive">plan to travel</b> with maximum comfort.</p><div class="image-box bungalow">Overwater bungalow drawing</div></article>
+          <article class="panel reveal"><span class="panel-label">Panel 4 • Activities</span><h3>Unforgettable Excursions</h3><p>You will <b class="gerund">love exploring</b> coral reefs and <b class="gerund">enjoy visiting</b> the white-sand beaches.</p><p>Guided snorkeling and swimming with marine life are included.</p><div class="image-box snorkel">Snorkeling adventure drawing</div></article>
+          <article class="panel reveal"><span class="panel-label">Panel 5 • Pricing</span><h3>Local Cuisine & Pricing</h3><p>The package includes fresh seafood, tropical fruits, flights, hotel, transport, and tours.</p><p>Total price: <strong>$1,500 per person</strong>. While some travelers <b class="gerund">prefer backpacking</b>, we <b class="infinitive">hope to see</b> you choosing premium comfort.</p><div class="image-box food">Tropical cuisine drawing</div></article>
+          <article class="panel reveal"><span class="panel-label">Panel 6 • Back Cover</span><h3>Travel Recommendations</h3><ul><li><strong>Clothing:</strong> Pack light beachwear and sandals.</li><li><strong>Protection:</strong> Bring sunglasses, sunscreen, and a beach hat.</li><li><strong>Luggage:</strong> <b class="gerund">Avoid traveling</b> with heavy winter clothes.</li><li><strong>Essentials:</strong> Passport, camera, and booking confirmation.</li></ul><div class="image-box suitcase">Suitcase essentials drawing</div></article>
+        </div>
+      </section>
+
+      <section class="section-shell interactive-lab">
+        <div class="section-title reveal"><p class="eyebrow">Creative extra</p><h2>Build Your Dream Package</h2><p>A small interactive agency tool to make the presentation feel alive.</p></div>
+        <div class="lab-grid reveal delay-1">
+          <div class="calculator-card">
+            <label>Travelers <input id="people" type="range" min="1" max="6" value="2" /></label>
+            <label>Days <input id="days" type="range" min="3" max="10" value="5" /></label>
+            <label class="check-row"><input id="adventure" type="checkbox" checked /> Add adventure excursion</label>
+            <label class="check-row"><input id="vip" type="checkbox" checked /> Add VIP sunset dinner</label>
+            <div class="price-output"><span>Estimated total</span><strong id="priceTotal">$3,000</strong><small id="priceDetail">2 travelers • 5 days</small></div>
+          </div>
+          <div class="passport-card">
+            <h3>Collect Passport Stamps</h3>
+            <p>Click the destinations to reveal stamps during the oral presentation.</p>
+            <div class="stamp-row"><button class="stamp-btn">✈ Tahiti</button><button class="stamp-btn">⛵ Lagoon</button><button class="stamp-btn">🐠 Coral Reef</button><button class="stamp-btn">🌋 Mount Otemanu</button></div>
+            <div id="stampWall" class="stamp-wall"></div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section-shell awards reveal">
+        <p class="eyebrow">Class voting</p><h2>Vote for our package</h2>
+        <div class="award-grid"><div>🏆<strong>Best Adventure Trip</strong><span>Coral reefs, snorkeling, boat tours.</span></div><div>🏆<strong>Best Budget Trip</strong><span>Everything included in one clear price.</span></div><div class="creative">🏆<strong>Most Creative Trip</strong><span>Interactive slides, passport stamps, and live package builder.</span></div></div>
+      </section>
+    </main>
+
+    <button id="topBtn" class="top-btn" aria-label="Back to top">↑</button>
+    <script src="./script.js"></script>
+  </body>
+</html>
