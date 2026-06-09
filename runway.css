@@ -1,0 +1,501 @@
+:root {
+  --real-plane-url: url('https://blogger.googleusercontent.com/img/a/AVvXsEhkWZihrmrYtXkRZqxWifnCjVokqK3yjP9FHBipau7VPJ0ER8E3vMF7klGqyiWFVlYtdzayxuMdc7MCl61srnShZ5tjvPpZXg4omFJOoRnnYSEVzLz6fMEodfhcQ6k5bcuY-CRTl3nruXz4sDuz1AwiVCqa8zw4x8OlkHb40ZIbZk1Fwd7jXcU8g5YjNiM');
+}
+
+/* Final cleanup: remove visual clutter from the hero */
+.requirements,
+.presentation-help,
+.cursor-glow { display: none !important; }
+
+body.nav-hidden-zone .nav {
+  opacity: 0 !important;
+  pointer-events: none !important;
+  transform: translateY(-125%) !important;
+}
+
+body.nav-hidden-zone .scroll-progress { opacity: .35; }
+
+/* Better standby screen: real runway / aircraft direction */
+.boarding-overlay { overflow: hidden; }
+.boarding-card.runway-lounge {
+  width: min(1580px, 88vw) !important;
+  min-height: min(760px, 82vh) !important;
+  max-height: 86vh;
+  display: grid !important;
+  grid-template-columns: .78fr 1.22fr !important;
+  gap: 0 !important;
+  padding: 0 !important;
+  border-radius: 42px !important;
+  overflow: hidden !important;
+  background: linear-gradient(135deg, rgba(8, 20, 32, .94), rgba(12, 67, 78, .84)) !important;
+  border: 1px solid rgba(220, 255, 255, .22) !important;
+  box-shadow: 0 40px 120px rgba(0, 0, 0, .42), inset 0 1px 0 rgba(255,255,255,.18) !important;
+  transform-style: flat !important;
+}
+
+.runway-copy {
+  position: relative;
+  z-index: 3;
+  padding: clamp(44px, 5vw, 78px);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  min-width: 0;
+}
+.runway-copy::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at 20% 15%, rgba(255,220,124,.22), transparent 32%),
+              radial-gradient(circle at 0% 100%, rgba(5, 184, 186, .16), transparent 36%);
+  pointer-events: none;
+}
+.runway-copy > * { position: relative; z-index: 2; }
+.runway-brand {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  margin-bottom: clamp(34px, 4vw, 56px);
+}
+.runway-brand img {
+  width: clamp(92px, 8vw, 128px);
+  height: clamp(92px, 8vw, 128px);
+  object-fit: contain;
+  filter: drop-shadow(0 20px 20px rgba(0,0,0,.22));
+}
+.runway-brand span {
+  display: block;
+  color: #95fff0;
+  letter-spacing: .2em;
+  text-transform: uppercase;
+  font-weight: 900;
+  font-size: .92rem;
+}
+.runway-brand strong {
+  display: block;
+  color: #fff;
+  font-size: clamp(1.1rem, 1.45vw, 1.6rem);
+}
+.runway-copy h1 {
+  margin: 0;
+  max-width: 680px;
+  color: #fff;
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(5.4rem, 7.8vw, 10rem) !important;
+  line-height: .83;
+  letter-spacing: -.07em;
+}
+.runway-copy p {
+  max-width: 600px;
+  margin: 30px 0 0;
+  color: rgba(243, 252, 255, .9);
+  font-size: clamp(1.08rem, 1.18vw, 1.34rem);
+  line-height: 1.6;
+  font-weight: 800;
+}
+.runway-actions {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-top: 34px;
+  flex-wrap: wrap;
+}
+.runway-start {
+  appearance: none;
+  border: 0;
+  border-radius: 999px;
+  background: linear-gradient(135deg, #ffe681, #ffc44f);
+  color: #071827;
+  padding: 18px 32px;
+  font-weight: 950;
+  font-size: 1rem;
+  cursor: pointer;
+  box-shadow: 0 18px 45px rgba(255, 200, 68, .28);
+  transition: transform .28s ease, box-shadow .28s ease;
+}
+.runway-start:hover { transform: translateY(-3px); box-shadow: 0 26px 70px rgba(255, 200, 68, .38); }
+.runway-meta {
+  display: flex;
+  gap: 10px;
+  margin-top: 26px;
+  flex-wrap: wrap;
+}
+.runway-meta span {
+  border: 1px solid rgba(255,255,255,.18);
+  background: rgba(255,255,255,.08);
+  color: rgba(255,255,255,.88);
+  padding: 10px 15px;
+  border-radius: 999px;
+  font-weight: 900;
+  font-size: .85rem;
+}
+
+.runway-terminal {
+  position: relative;
+  min-height: 620px;
+  overflow: hidden;
+  background: linear-gradient(180deg, rgba(149,214,226,.44), rgba(6,18,31,.1) 44%, rgba(3,12,22,.96) 45%),
+              linear-gradient(90deg, rgba(255,255,255,.08) 1px, transparent 1px),
+              linear-gradient(180deg, rgba(255,255,255,.12) 1px, transparent 1px);
+  background-size: auto, 170px 100%, 100% 170px;
+  border-left: 1px solid rgba(255,255,255,.16);
+}
+.runway-terminal::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at 52% 34%, rgba(255,255,255,.3), transparent 19%),
+              linear-gradient(90deg, transparent, rgba(255,255,255,.08), transparent);
+  opacity: .8;
+}
+.runway-board {
+  position: absolute;
+  z-index: 4;
+  left: 48px;
+  right: 48px;
+  top: 46px;
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+  padding: 20px 28px;
+  border-radius: 26px;
+  background: rgba(4, 17, 31, .84);
+  color: #fff;
+  box-shadow: 0 18px 55px rgba(0,0,0,.28);
+}
+.runway-board small {
+  display: block;
+  color: #9efff0;
+  letter-spacing: .18em;
+  text-transform: uppercase;
+  font-weight: 950;
+}
+.runway-board strong { font-size: 1.35rem; }
+
+.plane-window {
+  position: absolute;
+  z-index: 2;
+  left: 42px;
+  right: 42px;
+  top: 150px;
+  height: 230px;
+  border-radius: 28px;
+  border: 1px solid rgba(230,255,255,.24);
+  background: linear-gradient(180deg, rgba(224,247,255,.38), rgba(195,229,235,.13));
+  overflow: hidden;
+}
+.plane-window::after {
+  content: '';
+  position: absolute;
+  inset: -50% 12% auto auto;
+  width: 180px;
+  height: 460px;
+  transform: rotate(24deg);
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,.22), transparent);
+}
+
+.runway-strip {
+  position: absolute;
+  z-index: 1;
+  left: -8%;
+  right: -8%;
+  bottom: 104px;
+  height: 190px;
+  transform: skewY(-3deg);
+  background: linear-gradient(180deg, rgba(0,0,0,.02), rgba(0,0,0,.32)),
+              repeating-linear-gradient(90deg, rgba(255,255,255,.85) 0 80px, transparent 80px 158px);
+  background-size: 100% 100%, 240px 16px;
+  background-position: 0 0, 0 72px;
+  animation: runwayMove 1s linear infinite;
+  opacity: .9;
+}
+.runway-lights {
+  position: absolute;
+  z-index: 3;
+  left: 0;
+  right: 0;
+  bottom: 170px;
+  height: 12px;
+  background: repeating-linear-gradient(90deg, transparent 0 95px, rgba(255,232,120,.92) 96px 103px, transparent 104px 170px);
+  filter: drop-shadow(0 0 12px rgba(255,220,120,.75));
+  animation: runwayMove .75s linear infinite;
+}
+.runway-aircraft {
+  position: absolute;
+  z-index: 5;
+  left: 50%;
+  bottom: 126px;
+  width: min(650px, 70%);
+  transform: translateX(-36%);
+  animation: runwayPlanePulse 2.2s ease-in-out infinite;
+}
+.runway-aircraft img {
+  display: block;
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+  object-position: center;
+  clip-path: inset(12% 4% 19% 4% round 8px);
+  filter: drop-shadow(0 24px 18px rgba(0,0,0,.36)) contrast(1.05) saturate(.96);
+  transform: scale(1.18);
+}
+.runway-motion {
+  position: absolute;
+  z-index: 4;
+  left: 12%;
+  right: 10%;
+  bottom: 142px;
+  height: 90px;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,.22), transparent);
+  filter: blur(15px);
+  animation: windStreak 1.1s ease-in-out infinite;
+}
+@keyframes runwayMove { to { background-position: 0 0, -240px 72px; } }
+@keyframes runwayPlanePulse {
+  0%,100% { transform: translateX(-36%) translateY(0); }
+  50% { transform: translateX(-35%) translateY(-6px); }
+}
+@keyframes windStreak { 0%,100%{opacity:.25; transform:translateX(-30px)} 50%{opacity:.8; transform:translateX(38px)} }
+
+/* New takeoff sequence */
+.takeoff-overlay.show { display: block !important; opacity: 1 !important; }
+.runway-takeoff {
+  position: fixed;
+  inset: 0;
+  z-index: 99999;
+  display: grid;
+  grid-template-columns: .7fr 1.3fr;
+  align-items: center;
+  gap: 4vw;
+  padding: 6vw;
+  color: #fff;
+  background: radial-gradient(circle at 74% 42%, rgba(26, 120, 136, .36), transparent 30%),
+              linear-gradient(180deg, #03111d, #071a28 45%, #020a12);
+  overflow: hidden;
+}
+.runway-takeoff::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(90deg, rgba(255,255,255,.08) 1px, transparent 1px),
+              linear-gradient(180deg, rgba(255,255,255,.06) 1px, transparent 1px);
+  background-size: 150px 100%, 100% 150px;
+  opacity: .35;
+}
+.runway-takeoff-copy { position: relative; z-index: 3; }
+.runway-takeoff-copy span {
+  color: #9efff0;
+  letter-spacing: .22em;
+  text-transform: uppercase;
+  font-weight: 950;
+}
+.runway-takeoff-copy h2 {
+  margin: 22px 0;
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(5rem, 9vw, 9rem);
+  line-height: .82;
+  letter-spacing: -.065em;
+}
+.runway-takeoff-copy p { max-width: 520px; font-weight: 850; color: rgba(255,255,255,.85); font-size: 1.2rem; }
+.takeoff-stage {
+  position: relative;
+  z-index: 3;
+  height: min(560px, 64vh);
+  border-radius: 42px;
+  border: 1px solid rgba(255,255,255,.18);
+  overflow: hidden;
+  background: linear-gradient(180deg, rgba(129,213,230,.3), rgba(4,14,25,.94) 45%, rgba(0,6,12,.98));
+  box-shadow: 0 45px 110px rgba(0,0,0,.42);
+}
+.takeoff-runway {
+  position: absolute;
+  left: -12%;
+  right: -12%;
+  bottom: 55px;
+  height: 210px;
+  transform: rotate(-4deg);
+  background: linear-gradient(180deg, rgba(255,255,255,.04), rgba(0,0,0,.38)),
+              repeating-linear-gradient(90deg, rgba(255,255,255,.9) 0 70px, transparent 70px 145px);
+  background-size: 100% 100%, 260px 18px;
+  background-position: 0 0, 0 92px;
+  animation: runwayMove .36s linear infinite;
+}
+.takeoff-lights {
+  position: absolute;
+  left: -10%;
+  right: -10%;
+  bottom: 168px;
+  height: 12px;
+  transform: rotate(-4deg);
+  background: repeating-linear-gradient(90deg, transparent 0 82px, rgba(255,225,91,.95) 82px 91px, transparent 92px 150px);
+  filter: drop-shadow(0 0 20px rgba(255,220,90,.85));
+  animation: runwayMove .35s linear infinite;
+}
+.takeoff-plane-real {
+  position: absolute;
+  z-index: 5;
+  left: -6%;
+  bottom: 125px;
+  width: min(720px, 78%);
+  animation: realTakeoff 3.4s cubic-bezier(.18,.78,.22,1) forwards;
+}
+.takeoff-plane-real img {
+  width: 100%;
+  display: block;
+  clip-path: inset(12% 4% 19% 4% round 8px);
+  filter: drop-shadow(0 28px 22px rgba(0,0,0,.42));
+  transform: scale(1.12);
+}
+.takeoff-cloud-wipe {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at 70% 38%, rgba(255,255,255,.8), transparent 22%),
+              linear-gradient(90deg, transparent, rgba(255,255,255,.78), transparent);
+  opacity: 0;
+  filter: blur(16px);
+  animation: cloudWipe 3.4s ease forwards;
+}
+@keyframes realTakeoff {
+  0% { transform: translate3d(-18%, 38px, 0) rotate(0deg) scale(.92); }
+  42% { transform: translate3d(23%, 18px, 0) rotate(0deg) scale(1); }
+  70% { transform: translate3d(55%, -62px, 0) rotate(-5deg) scale(1.04); }
+  100% { transform: translate3d(128%, -220px, 0) rotate(-9deg) scale(1.16); }
+}
+@keyframes cloudWipe {
+  0%,58% { opacity: 0; transform: translateX(-40%); }
+  76% { opacity: .82; transform: translateX(8%); }
+  100% { opacity: 0; transform: translateX(60%); }
+}
+
+/* Hero cleanup */
+.hero-logo { width: clamp(110px, 9vw, 150px) !important; height: auto !important; filter: drop-shadow(0 20px 22px rgba(0,0,0,.32)); }
+.hero .requirements { display: none !important; }
+.hero-ticket { right: clamp(70px, 9vw, 150px) !important; max-width: 320px !important; }
+
+/* Smooth stage swaps */
+.stage-shell { transition: opacity .28s ease, transform .28s ease; }
+.stage-shell.is-changing { opacity: 0; transform: translateY(16px) scale(.99); }
+.stage-media, .stage-text { transition: transform .48s ease, opacity .48s ease, box-shadow .35s ease !important; }
+.stage-media { min-height: 620px !important; }
+.stage-media img { transition: transform .9s ease, filter .45s ease; }
+.stage-media:hover img { transform: scale(1.035); filter: saturate(1.06) contrast(1.02); }
+.stage-actions .soft-btn { transition: transform .24s ease, background .24s ease, box-shadow .24s ease; }
+.stage-actions .soft-btn:hover { transform: translateY(-3px); box-shadow: 0 18px 38px rgba(0,0,0,.12); }
+
+/* Make journey cards compact and horizontal */
+.journey-board {
+  width: min(1120px, 84vw) !important;
+  padding: 14px !important;
+  border-radius: 32px !important;
+  gap: 10px !important;
+}
+.journey-card {
+  min-height: 86px !important;
+  padding: 14px 16px !important;
+  border-radius: 24px !important;
+}
+.journey-card span { font-size: 1.12rem !important; }
+.journey-card b { font-size: .95rem !important; }
+.journey-card small { font-size: .82rem !important; }
+
+/* All-inclusive: clean infinite carousel, no arrow buttons */
+.include-carousel {
+  overflow: hidden !important;
+  border-radius: 34px;
+  padding: 8px 0 !important;
+}
+.include-carousel .carousel-btn { display: none !important; }
+.include-carousel .carousel-track {
+  display: flex !important;
+  gap: 24px !important;
+  width: max-content !important;
+  animation: includeLoop 28s linear infinite;
+}
+.include-carousel:hover .carousel-track { animation-play-state: paused; }
+.include-card {
+  width: 390px !important;
+  min-height: 250px !important;
+  flex: 0 0 auto !important;
+  border-radius: 30px !important;
+}
+@keyframes includeLoop { to { transform: translateX(calc(-50% - 12px)); } }
+
+/* Brochure: more editorial, less school-card */
+.brochure-grid {
+  grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+  gap: 28px !important;
+}
+.brochure-card {
+  min-height: 390px !important;
+  padding: 24px !important;
+  border-radius: 32px !important;
+}
+.brochure-card img {
+  height: 155px !important;
+  border-radius: 22px !important;
+  object-fit: cover !important;
+}
+.brochure-card p {
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+.brochure-card::after {
+  content: 'Open panel';
+  position: absolute;
+  right: 22px;
+  bottom: 20px;
+  color: #079a9d;
+  font-weight: 950;
+  letter-spacing: .04em;
+  opacity: 0;
+  transform: translateY(8px);
+  transition: .25s ease;
+}
+.brochure-card:hover::after { opacity: 1; transform: translateY(0); }
+
+/* Interactive: clarify passport area */
+#interactive .lab-card:nth-child(2) h3::after {
+  content: 'Trip progress';
+  display: inline-flex;
+  margin-left: 12px;
+  padding: 7px 12px;
+  border-radius: 999px;
+  background: rgba(18,184,177,.12);
+  color: #078d92;
+  font-family: Inter, sans-serif;
+  font-size: .85rem;
+  letter-spacing: .02em;
+  vertical-align: middle;
+}
+.passport-wall .stamp { animation: stampDrop .45s ease both; }
+@keyframes stampDrop { 0%{opacity:0; transform:scale(1.35) rotate(-8deg)} 100%{opacity:1; transform:scale(1) rotate(var(--r, -3deg))} }
+
+/* Final: stronger logo and completion */
+.final-brand-logo,
+.final-content > img {
+  width: 132px !important;
+  height: 132px !important;
+  object-fit: contain !important;
+  filter: drop-shadow(0 22px 26px rgba(0,0,0,.36));
+}
+.final-card { min-height: 720px !important; }
+.final-content { padding-top: 42px !important; }
+.final-content::after {
+  content: '';
+  position: absolute;
+  inset: auto 18% 10% 18%;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, rgba(255,214,101,.8), transparent);
+  filter: drop-shadow(0 0 18px rgba(255,214,101,.7));
+}
+.approved { box-shadow: 0 0 0 1px rgba(255,230,124,.22), 0 0 60px rgba(255,209,83,.18); }
+
+@media (max-width: 1100px) {
+  .boarding-card.runway-lounge { grid-template-columns: 1fr !important; width: 94vw !important; overflow: auto !important; }
+  .runway-terminal { min-height: 390px; }
+  .runway-copy h1 { font-size: 4.2rem !important; }
+  .runway-takeoff { grid-template-columns: 1fr; padding: 8vw; }
+  .brochure-grid { grid-template-columns: 1fr !important; }
+}
