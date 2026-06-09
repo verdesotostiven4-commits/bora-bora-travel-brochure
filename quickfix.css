@@ -12,6 +12,7 @@
 .brand img,
 .hero-logo,
 .boarding-top img,
+.boarding-logo-line img,
 .lounge-logo{
   background:var(--fix-white)!important;
   padding:10px!important;
@@ -39,11 +40,23 @@
 
 .boarding-top img,
 #boardingLogo,
+.boarding-logo-line img,
 .lounge-logo{
   width:150px!important;
   height:150px!important;
   padding:14px!important;
   border-radius:32px!important;
+}
+
+.boarding-logo-line{
+  display:inline-flex!important;
+  width:max-content!important;
+  max-width:100%!important;
+  padding:14px 18px!important;
+  border-radius:34px!important;
+  background:rgba(255,255,255,.10)!important;
+  border:1px solid rgba(255,255,255,.18)!important;
+  box-shadow:0 20px 70px rgba(0,0,0,.20)!important;
 }
 
 .boarding-overlay:not(.hidden){
@@ -53,16 +66,20 @@
 }
 
 .boarding-overlay::before{
-  background:linear-gradient(90deg,rgba(2,11,19,.82),rgba(2,22,34,.52),rgba(4,80,98,.18)),radial-gradient(circle at 78% 18%,rgba(24,200,189,.35),transparent 36%)!important;
+  background:linear-gradient(90deg,rgba(2,11,19,.78),rgba(2,22,34,.48),rgba(4,80,98,.16)),radial-gradient(circle at 78% 18%,rgba(24,200,189,.35),transparent 36%)!important;
 }
 
 .boarding-bg{
   filter:saturate(1.18) contrast(1.06) brightness(1)!important;
 }
 
+.boarding-shade{
+  background:linear-gradient(90deg,rgba(2,9,15,.74),rgba(3,28,39,.34),rgba(3,28,39,.08))!important;
+}
+
 .boarding-card,
 .boarding-card.director-boarding{
-  background:linear-gradient(135deg,rgba(5,28,42,.72),rgba(7,79,96,.40))!important;
+  background:linear-gradient(135deg,rgba(5,28,42,.68),rgba(7,79,96,.36))!important;
   border:1px solid rgba(255,255,255,.34)!important;
   box-shadow:0 46px 150px rgba(0,0,0,.42),inset 0 1px 0 rgba(255,255,255,.20)!important;
   color:white!important;
@@ -87,6 +104,7 @@
   box-shadow:0 20px 70px rgba(0,0,0,.18)!important;
 }
 
+.boarding-logo-line b,
 .lounge-brand div span,
 .departure-board small,
 .lounge-stats small,
@@ -94,8 +112,10 @@
   color:#8ffcf3!important;
 }
 
+.boarding-logo-line span,
 .lounge-brand div strong,
 .lounge-copy h1,
+.boarding-left h1,
 .boarding-card h1,
 .boarding-top h2,
 .departure-board strong,
@@ -106,6 +126,7 @@
 }
 
 .lounge-copy p,
+.boarding-left p,
 .boarding-copy,
 .boarding-actions span{
   color:#f2ffff!important;
@@ -123,11 +144,13 @@
   background:linear-gradient(180deg,rgba(187,239,248,.36),rgba(255,255,255,.12) 46%,rgba(3,13,23,.58) 47%)!important;
 }
 
-.terminal-window{
-  background:linear-gradient(180deg,rgba(130,235,248,.36),rgba(255,255,255,.10)),radial-gradient(circle at 70% 42%,rgba(255,216,106,.26),transparent 22%)!important;
+.terminal-window,
+.boarding-runway{
+  background:linear-gradient(180deg,rgba(130,235,248,.36),rgba(255,255,255,.10) 44%,rgba(3,14,23,.78) 58%)!important;
 }
 
 .departure-board,
+.flight-board,
 .lounge-stats div,
 .ticket-grid div{
   background:rgba(3,14,25,.66)!important;
@@ -146,13 +169,16 @@
 }
 
 @media (max-width:900px){
+  .boarding-card,
   .boarding-card.director-boarding{
     width:min(94vw,720px)!important;
     min-height:auto!important;
     grid-template-columns:1fr!important;
+    padding:34px 26px!important;
   }
 
-  .lounge-visual{
+  .lounge-visual,
+  .boarding-runway{
     min-height:430px!important;
     border-left:0!important;
     border-top:1px solid rgba(255,255,255,.16)!important;
@@ -163,6 +189,7 @@
   }
 
   .lounge-logo,
+  .boarding-logo-line img,
   #boardingLogo{
     width:112px!important;
     height:112px!important;
